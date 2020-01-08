@@ -7,6 +7,7 @@ var motion = Vector2()
 
 onready var collision_shape = $collision
 
+
 func _physics_process(delta):
 	
 	motion = Vector2()
@@ -22,6 +23,7 @@ func _physics_process(delta):
 		set_motion("idle")
 	
 	motion = move_and_slide(motion)
+	light_switch()
 
 func set_motion(dir):
 	if dir == "ui_left":
@@ -70,3 +72,9 @@ func allowed_directions():
 func opposite_directions(dirlist):
 	var opposites = {"ui_up":"ui_down","ui_left":"ui_right","ui_down":"ui_up","ui_right":"ui_left"}
 	print(opposites[dirlist[0]])
+	
+func light_switch():
+	if Input.is_action_pressed("ui_select"):
+		$circlight.enabled = true
+	else:
+		$circlight.enabled = false
