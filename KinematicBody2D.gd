@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-const SPEED = 200
+const SPEED = 100
+const DSPEED = SPEED * 0.7
 const DIRECTIONS = ["ui_left","ui_right","ui_down","ui_up"]
 const DIR_ACTION = {"ui_left":[-SPEED,0],"ui_right":[SPEED,0],"ui_up":[0,-SPEED],"ui_down":[0,SPEED]}
 var motion = Vector2()
@@ -14,11 +15,7 @@ func _physics_process(delta):
 	
 	var moving = allowed_directions()
 	if moving:
-		if len(moving) > 1:
-			for direction in moving:
-				set_motion(direction)
-		else:
-			set_motion(moving[0])
+		set_motion(moving)
 	else:
 		set_motion("idle")
 	
@@ -26,28 +23,52 @@ func _physics_process(delta):
 	light_switch()
 
 func set_motion(dir):
-	if dir == "ui_left":
-		set_collision_shape(32,16)
-		$Sprite.flip_h = false
-		$Sprite.play("hWalk")
-		motion.x = -SPEED
-	elif dir == "ui_right":
-		set_collision_shape(32,16)
-		$Sprite.flip_h = true
-		$Sprite.play("hWalk")
-		motion.x = SPEED
-	elif dir == "ui_down":
-		set_collision_shape(16,16)
-		$Sprite.play("downWalk")
-		motion.y = SPEED
-	elif dir == "ui_up":
-		set_collision_shape(16,16)
-		$Sprite.play("upWalk")
-		motion.y = -SPEED
-	else:
+	if "idle" in dir:
 		motion.y = 0
 		motion.x = 0
 		$Sprite.play("Idle")
+	else:
+		if "ui_up" in dir:
+			if "ui_left" in dir:
+				motion.x = -DSPEED
+				motion.y = -DSPEED
+				$Sprite.flip_h = false
+				$Sprite.play("upDiag")
+			elif "ui_right" in dir:
+				motion.x = DSPEED
+				motion.y = -DSPEED
+				$Sprite.flip_h = true
+				$Sprite.play("upDiag")
+			else:
+				motion.y = -SPEED
+				$Sprite.play("upWalk")
+				set_collision_shape(12,12)
+		elif "ui_down" in dir:
+			if "ui_left" in dir:
+				motion.x = -DSPEED
+				motion.y = DSPEED
+				$Sprite.flip_h = false
+				$Sprite.play("downDiag")
+			elif "ui_right" in dir:
+				motion.x = DSPEED
+				motion.y = DSPEED
+				$Sprite.flip_h = true
+				$Sprite.play("downDiag")
+			else:
+				motion.y = SPEED
+				$Sprite.play("downWalk")
+				set_collision_shape(12,12)
+		elif "ui_left" in dir:
+			motion.x = -SPEED
+			$Sprite.flip_h = false
+			$Sprite.play("hWalk")
+			set_collision_shape(19,12)
+		elif "ui_right" in dir:
+			motion.x = SPEED
+			$Sprite.flip_h = true
+			$Sprite.play("hWalk")
+			set_collision_shape(19,12)
+		
 
 
 func set_collision_shape(x,y):
@@ -75,6 +96,7 @@ func opposite_directions(dirlist):
 	
 func light_switch():
 	if Input.is_action_pressed("ui_select"):
-		$circlight.enabled = true
-	else:
 		$circlight.enabled = false
+	else:
+		$circlight.enabled = true
+
