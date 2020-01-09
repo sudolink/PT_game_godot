@@ -42,6 +42,7 @@ func set_motion(dir):
 			else:
 				motion.y = -SPEED
 				$Sprite.play("upWalk")
+				set_collision_shape(12,12)
 		elif "ui_down" in dir:
 			if "ui_left" in dir:
 				motion.x = -DSPEED
@@ -56,14 +57,17 @@ func set_motion(dir):
 			else:
 				motion.y = SPEED
 				$Sprite.play("downWalk")
+				set_collision_shape(12,12)
 		elif "ui_left" in dir:
 			motion.x = -SPEED
 			$Sprite.flip_h = false
 			$Sprite.play("hWalk")
+			set_collision_shape(19,12)
 		elif "ui_right" in dir:
 			motion.x = SPEED
 			$Sprite.flip_h = true
 			$Sprite.play("hWalk")
+			set_collision_shape(19,12)
 		
 
 
@@ -92,8 +96,7 @@ func opposite_directions(dirlist):
 	
 func light_switch():
 	if Input.is_action_pressed("ui_select"):
-		$circlight.enabled = true
-	else:
 		$circlight.enabled = false
-
+	else:
+		$circlight.enabled = true
 
