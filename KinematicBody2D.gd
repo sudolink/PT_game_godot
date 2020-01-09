@@ -85,18 +85,27 @@ func allowed_directions():
 			pressed_list.append(direction)
 	if len(pressed_list) > 2: #crop number of pressed directions to 2 if more are present
 		pressed_list.resize(2)
-		opposite_directions(pressed_list)
+		if opposite_directions(pressed_list):
+			pressed_list.resize(0)
 	
 	return pressed_list
 	
 
 func opposite_directions(dirlist):
 	var opposites = {"ui_up":"ui_down","ui_left":"ui_right","ui_down":"ui_up","ui_right":"ui_left"}
-	print(opposites[dirlist[0]])
+	return opposites[dirlist[0]] == dirlist[1]
 	
 func light_switch():
-	if Input.is_action_pressed("ui_select"):
-		$circlight.enabled = false
-	else:
-		$circlight.enabled = true
+	if Input.is_action_just_pressed("ui_select"):
+		if $circlight.enabled:
+			$circlight.enabled = false
+		else:
+			$circlight.enabled = true
+
+
+func iminside():
+	print("I'm inside!")
+
+func ileft():
+	print("i left")
 
