@@ -5,6 +5,7 @@ const DSPEED = SPEED * 0.7
 const DIRECTIONS = ["ui_left","ui_right","ui_down","ui_up"]
 const DIR_ACTION = {"ui_left":[-SPEED,0],"ui_right":[SPEED,0],"ui_up":[0,-SPEED],"ui_down":[0,SPEED]}
 var motion = Vector2()
+var interacting_with = null
 
 onready var collision_shape = $collision
 
@@ -19,8 +20,13 @@ func _physics_process(delta):
 	else:
 		set_motion("idle")
 	
+	motion.x *= delta*SPEED/2
+	motion.y *= delta*SPEED/2
 	motion = move_and_slide(motion)
 	light_switch()
+	
+	if interacting_with:
+		interacting_with.interaction(delta)
 
 func set_motion(dir):
 	if "idle" in dir:
@@ -103,9 +109,11 @@ func light_switch():
 			$circlight.enabled = true
 
 
-func iminside():
-	print("I'm inside!")
+func imnear(object):
+	interacting_with = object 
+	print("I'm near ->",object.name)
 
-func ileft():
-	print("i left")
+func ileft(object):
+	interacting_with = null
+	print("i left ->",object.name)
 
