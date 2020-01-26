@@ -27,6 +27,10 @@ func _physics_process(delta):
 	
 	if interacting_with:
 		interacting_with.interaction(delta)
+		
+func _process(delta):
+	pass
+
 
 func set_motion(dir):
 	if "idle" in dir:
@@ -48,7 +52,7 @@ func set_motion(dir):
 			else:
 				motion.y = -SPEED
 				$Sprite.play("upWalk")
-				set_collision_shape(12,12)
+				set_collision_shape(8,4)
 		elif "ui_down" in dir:
 			if "ui_left" in dir:
 				motion.x = -DSPEED
@@ -63,17 +67,17 @@ func set_motion(dir):
 			else:
 				motion.y = SPEED
 				$Sprite.play("downWalk")
-				set_collision_shape(12,12)
+				set_collision_shape(8,4)
 		elif "ui_left" in dir:
 			motion.x = -SPEED
 			$Sprite.flip_h = false
 			$Sprite.play("hWalk")
-			set_collision_shape(19,12)
+			set_collision_shape(10,4)
 		elif "ui_right" in dir:
 			motion.x = SPEED
 			$Sprite.flip_h = true
 			$Sprite.play("hWalk")
-			set_collision_shape(19,12)
+			set_collision_shape(10,4)
 		
 
 
@@ -82,6 +86,7 @@ func set_collision_shape(x,y):
 	var new_vec = Vector2(x,y)
 	new_shape.set_extents(new_vec)
 	collision_shape.set_shape(new_shape)
+	print(collision_shape.position)
 
 func allowed_directions():
 	#get list of movement buttons pressed
@@ -108,12 +113,13 @@ func light_switch():
 		else:
 			$circlight.enabled = true
 
-
 func imnear(object):
-	interacting_with = object 
+	interacting_with = object
+	$InteractionSprite.visible = true
 	print("I'm near ->",object.name)
 
 func ileft(object):
 	interacting_with = null
+	$InteractionSprite.visible = false
 	print("i left ->",object.name)
 
