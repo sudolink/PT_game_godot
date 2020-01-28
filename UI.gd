@@ -19,5 +19,5 @@ func show():
 	set_offset(Vector2(0,0))
 
 func typeOut(text):
-	$text.text = text
+	$"Dialog/text".text = text
 	show()

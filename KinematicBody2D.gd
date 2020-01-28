@@ -1,11 +1,15 @@
 extends KinematicBody2D
 
+
 const SPEED = 100
 const DSPEED = SPEED * 0.7
 const DIRECTIONS = ["ui_left","ui_right","ui_down","ui_up"]
 const DIR_ACTION = {"ui_left":[-SPEED,0],"ui_right":[SPEED,0],"ui_up":[0,-SPEED],"ui_down":[0,SPEED]}
 var motion = Vector2()
+var direction = "up"
+var is_idle = false
 var interacting_with = null
+var inventory_list = []
 
 onready var collision_shape = $collision
 
@@ -26,17 +30,35 @@ func _physics_process(delta):
 	light_switch()
 	
 	if interacting_with:
-		interacting_with.interaction(delta)
-		
-func _process(delta):
-	pass
+		interacting_with.interaction()
 
+func set_idle(travolta):
+	if travolta == "johntravolta":
+		$Sprite.play("Idle")
+	else:
+		if not is_idle:
+			$Sprite.animation = "Idle"
+			if direction == "up":
+				$Sprite.frame = 0
+			elif direction == "down":
+				$Sprite.frame = 6
+			elif direction == "left" or direction == "right":
+				$Sprite.frame = 4
+			elif direction == "upleft" or direction == "upright":
+				$Sprite.frame = 1
+			elif direction == "downleft" or direction == "downright":
+				$Sprite.frame = 7
+			else:
+				print("WHOOPSIE IN SET_IDLE")
+			is_idle = true
+	
+	
 
 func set_motion(dir):
 	if "idle" in dir:
 		motion.y = 0
 		motion.x = 0
-		$Sprite.play("Idle")
+		set_idle(null)
 	else:
 		if "ui_up" in dir:
 			if "ui_left" in dir:
@@ -44,41 +66,49 @@ func set_motion(dir):
 				motion.y = -DSPEED
 				$Sprite.flip_h = false
 				$Sprite.play("upDiag")
+				direction = "upleft"
 			elif "ui_right" in dir:
 				motion.x = DSPEED
 				motion.y = -DSPEED
 				$Sprite.flip_h = true
 				$Sprite.play("upDiag")
+				direction = "upright"
 			else:
 				motion.y = -SPEED
 				$Sprite.play("upWalk")
-				set_collision_shape(8,4)
+				set_collision_shape(7,4)
+				direction = "up"
 		elif "ui_down" in dir:
 			if "ui_left" in dir:
 				motion.x = -DSPEED
 				motion.y = DSPEED
 				$Sprite.flip_h = false
 				$Sprite.play("downDiag")
+				direction = "downleft"
 			elif "ui_right" in dir:
 				motion.x = DSPEED
 				motion.y = DSPEED
 				$Sprite.flip_h = true
 				$Sprite.play("downDiag")
+				direction = "downright"
 			else:
 				motion.y = SPEED
 				$Sprite.play("downWalk")
-				set_collision_shape(8,4)
+				set_collision_shape(7,4)
+				direction = "down"
 		elif "ui_left" in dir:
 			motion.x = -SPEED
 			$Sprite.flip_h = false
 			$Sprite.play("hWalk")
 			set_collision_shape(10,4)
+			direction = "left"
 		elif "ui_right" in dir:
 			motion.x = SPEED
 			$Sprite.flip_h = true
 			$Sprite.play("hWalk")
 			set_collision_shape(10,4)
-		
+			direction = "right"
+		is_idle = false
 
 
 func set_collision_shape(x,y):
@@ -86,7 +116,6 @@ func set_collision_shape(x,y):
 	var new_vec = Vector2(x,y)
 	new_shape.set_extents(new_vec)
 	collision_shape.set_shape(new_shape)
-	print(collision_shape.position)
 
 func allowed_directions():
 	#get list of movement buttons pressed
@@ -100,12 +129,27 @@ func allowed_directions():
 			pressed_list.resize(0)
 	
 	return pressed_list
-	
 
 func opposite_directions(dirlist):
 	var opposites = {"ui_up":"ui_down","ui_left":"ui_right","ui_down":"ui_up","ui_right":"ui_left"}
 	return opposites[dirlist[0]] == dirlist[1]
 	
+############## INVENTORY ##################
+signal inventory_change
+
+func toggle_inventory():
+	pass
+
+func pick_up():
+	pass
+	
+func drop():
+	pass
+
+func use():
+	pass
+
+
 func light_switch():
 	if Input.is_action_just_pressed("ui_select"):
 		if $circlight.enabled:

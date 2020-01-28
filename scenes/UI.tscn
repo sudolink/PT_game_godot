@@ -10,7 +10,9 @@ offset = Vector2( 0, 250 )
 transform = Transform2D( 1, 0, 0, 1, 0, 250 )
 script = ExtResource( 1 )
 
-[node name="text" type="Label" parent="."]
+[node name="Dialog" type="Node2D" parent="."]
+
+[node name="text" type="Label" parent="Dialog"]
 margin_left = 360.0
 margin_top = 480.0
 margin_right = 529.0
@@ -20,9 +22,11 @@ custom_fonts/font = ExtResource( 2 )
 text = "TEST"
 align = 1
 
-[node name="dialog_box" type="Sprite" parent="."]
+[node name="dialog_box" type="Sprite" parent="Dialog"]
 light_mask = 0
 position = Vector2( 509.256, 496.583 )
 scale = Vector2( 6, 3 )
 z_index = -2
 texture = ExtResource( 3 )
+
+[node name="Inventory" type="Node2D" parent="."]
