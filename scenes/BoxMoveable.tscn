@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Box.gd" type="Script" id=1]
+[ext_resource path="res://assets/objects/BoxWood.png" type="Texture" id=2]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+cull_mode = 1
+polygon = PoolVector2Array( -8, 12, 8, 12, 8, 0, -8, 0 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 8, 11 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 15, 17 )
+
+[node name="BoxMoveable" type="StaticBody2D"]
+collision_layer = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 12.0 ]
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
+visible = false
+occluder = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 4 )
+shape = SubResource( 2 )
+
+[node name="detect_body_upper" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_body_upper"]
+visible = false
+position = Vector2( 0, -4 )
+shape = SubResource( 3 )
+
+[node name="detect_body_lower" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_body_lower"]
+visible = false
+position = Vector2( 0, 15 )
+shape = SubResource( 4 )
+
+[node name="proximity" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="proximity"]
+visible = false
+shape = SubResource( 5 )
+[connection signal="body_entered" from="detect_body_upper" to="." method="_on_detect_body_upper_body_entered"]
+[connection signal="body_entered" from="detect_body_lower" to="." method="_on_detect_body_lower_body_entered"]
+[connection signal="body_entered" from="proximity" to="." method="_on_proximity_body_entered"]
+[connection signal="body_exited" from="proximity" to="." method="_on_proximity_body_exited"]

@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://TilesetFactory.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Table.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/DoorUp.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/Box_new.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/BoxMoveable.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/BoxCrowbar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Box.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=8]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 32, 80, 32, 112, 64, 112, 64, 528, 432, 528, 432, 384, 464, 384, 464, 304, 400, 304, 400, 384, 304, 384, 304, 336, 272, 336, 272, 240, 288, 240, 288, 224, 448, 224, 448, 80, 384, 80, 384, 192, 288, 192, 288, 112, 176, 112, 176, 192, 112, 192, 112, 80 )
@@ -44,9 +46,22 @@ collision_mask = 3
 position = Vector2( 24.06, 88 )
 collision_mask = 3
 
-[node name="Box_new" parent="Objects" instance=ExtResource( 5 )]
-position = Vector2( -31.94, -32 )
-collision_layer = 2
-collision_mask = 3
+[node name="BoxMoveable" parent="Objects" instance=ExtResource( 5 )]
+position = Vector2( -83.94, 24 )
 
-[node name="UI" parent="." instance=ExtResource( 6 )]
+[node name="BoxCrowbar" parent="Objects" instance=ExtResource( 6 )]
+position = Vector2( -67.94, 24 )
+
+[node name="BoxCrowbar2" parent="Objects" instance=ExtResource( 6 )]
+position = Vector2( 88.06, 22 )
+
+[node name="Box" parent="Objects" instance=ExtResource( 7 )]
+position = Vector2( 0.0599976, -32 )
+
+[node name="Items" type="Node2D" parent="."]
+visible = false
+
+[node name="UI" parent="." instance=ExtResource( 8 )]
+pause_mode = 2
+offset = Vector2( 0, 0 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )

@@ -1,0 +1,775 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://scenes/InventoryDisplay.gd" type="Script" id=1]
+[ext_resource path="res://assets/blackbg.png" type="Texture" id=2]
+[ext_resource path="res://assets/hud/InventoryFrame.png" type="Texture" id=3]
+[ext_resource path="res://assets/items/icon_highlight_Crowbar.png" type="Texture" id=4]
+[ext_resource path="res://assets/items/highlight_white_square_edged.png" type="Texture" id=5]
+[ext_resource path="res://assets/FONT/Minecraft.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "pulse"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
+"update": 0,
+"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "pulse"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
+"update": 0,
+"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "pulse"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
+"update": 0,
+"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "pulse"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
+"update": 0,
+"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "pulse"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
+"update": 0,
+"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "pulse"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
+"update": 0,
+"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "pulse"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
+"update": 0,
+"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "pulse"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
+"update": 0,
+"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "pulse"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
+"update": 0,
+"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "pulse"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
+"update": 0,
+"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "pulse"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
+"update": 0,
+"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "pulse"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
+"update": 0,
+"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "pulse"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
+"update": 0,
+"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "pulse"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
+"update": 0,
+"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "pulse"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
+"update": 0,
+"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "pulse"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
+"update": 0,
+"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=17]
+size = 10
+outline_size = 1
+outline_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+font_data = ExtResource( 6 )
+
+[node name="InventoryDisplay" type="Control" groups=[
+"inventory_display",
+]]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 2.0, 32.0 ],
+"_edit_vertical_guides_": [ 2.0, 32.0 ]
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.666667 )
+margin_left = -1158.0
+margin_top = -426.0
+margin_right = 846.0
+margin_bottom = 682.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+
+[node name="ItemContainer" type="Control" parent="."]
+editor/display_folded = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Slot_0" type="TextureRect" parent="ItemContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 4 )
+
+[node name="Slot_1" type="TextureRect" parent="ItemContainer"]
+margin_left = 34.0
+margin_top = 2.0
+margin_right = 64.0
+margin_bottom = 32.0
+texture = ExtResource( 4 )
+
+[node name="Slot_2" type="TextureRect" parent="ItemContainer"]
+margin_left = 66.0
+margin_top = 2.0
+margin_right = 96.0
+margin_bottom = 32.0
+texture = ExtResource( 4 )
+
+[node name="Slot_3" type="TextureRect" parent="ItemContainer"]
+margin_left = 98.0
+margin_top = 2.0
+margin_right = 128.0
+margin_bottom = 32.0
+texture = ExtResource( 4 )
+
+[node name="Slot_4" type="TextureRect" parent="ItemContainer"]
+margin_left = 130.0
+margin_top = 2.0
+margin_right = 160.0
+margin_bottom = 32.0
+texture = ExtResource( 4 )
+
+[node name="Slot_5" type="TextureRect" parent="ItemContainer"]
+margin_left = 2.0
+margin_top = 34.0
+margin_right = 32.0
+margin_bottom = 64.0
+texture = ExtResource( 4 )
+
+[node name="Slot_6" type="TextureRect" parent="ItemContainer"]
+margin_left = 34.0
+margin_top = 34.0
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 4 )
+
+[node name="Slot_7" type="TextureRect" parent="ItemContainer"]
+margin_left = 66.0
+margin_top = 34.0
+margin_right = 96.0
+margin_bottom = 64.0
+texture = ExtResource( 4 )
+
+[node name="Slot_8" type="TextureRect" parent="ItemContainer"]
+margin_left = 98.0
+margin_top = 34.0
+margin_right = 128.0
+margin_bottom = 64.0
+texture = ExtResource( 4 )
+
+[node name="Slot_9" type="TextureRect" parent="ItemContainer"]
+margin_left = 130.0
+margin_top = 34.0
+margin_right = 160.0
+margin_bottom = 64.0
+texture = ExtResource( 4 )
+
+[node name="Slot_10" type="TextureRect" parent="ItemContainer"]
+margin_left = 2.0
+margin_top = 66.0
+margin_right = 32.0
+margin_bottom = 96.0
+texture = ExtResource( 4 )
+
+[node name="Slot_11" type="TextureRect" parent="ItemContainer"]
+margin_left = 34.0
+margin_top = 66.0
+margin_right = 64.0
+margin_bottom = 96.0
+texture = ExtResource( 4 )
+
+[node name="Slot_12" type="TextureRect" parent="ItemContainer"]
+margin_left = 66.0
+margin_top = 66.0
+margin_right = 96.0
+margin_bottom = 96.0
+texture = ExtResource( 4 )
+
+[node name="Slot_13" type="TextureRect" parent="ItemContainer"]
+margin_left = 98.0
+margin_top = 66.0
+margin_right = 128.0
+margin_bottom = 96.0
+texture = ExtResource( 4 )
+
+[node name="Slot_14" type="TextureRect" parent="ItemContainer"]
+margin_left = 130.0
+margin_top = 66.0
+margin_right = 160.0
+margin_bottom = 96.0
+texture = ExtResource( 4 )
+
+[node name="ItemContainerNumbers" type="Control" parent="."]
+editor/display_folded = true
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="0" type="Label" parent="ItemContainerNumbers"]
+self_modulate = Color( 1, 1, 1, 0.341176 )
+margin_left = 10.0
+margin_top = 6.0
+margin_right = 20.0
+margin_bottom = 20.0
+rect_scale = Vector2( 1.53041, 1.53041 )
+text = "0"
+
+[node name="1" type="Label" parent="ItemContainerNumbers"]
+self_modulate = Color( 1, 1, 1, 0.341176 )
+margin_left = 42.0
+margin_top = 6.0
+margin_right = 52.0
+margin_bottom = 20.0
+rect_scale = Vector2( 1.53041, 1.53041 )
+text = "1"
+
+[node name="2" type="Label" parent="ItemContainerNumbers"]
+self_modulate = Color( 1, 1, 1, 0.341176 )
+margin_left = 74.0
+margin_top = 6.0
+margin_right = 84.0
+margin_bottom = 20.0
+rect_scale = Vector2( 1.53041, 1.53041 )
+text = "2"
+
+[node name="3" type="Label" parent="ItemContainerNumbers"]
+self_modulate = Color( 1, 1, 1, 0.341176 )
+margin_left = 106.0
+margin_top = 6.0
+margin_right = 116.0
+margin_bottom = 20.0
+rect_scale = Vector2( 1.53041, 1.53041 )
+text = "3"
+
+[node name="4" type="Label" parent="ItemContainerNumbers"]
+self_modulate = Color( 1, 1, 1, 0.341176 )
+margin_left = 138.0
+margin_top = 6.0
+margin_right = 148.0
+margin_bottom = 20.0
+rect_scale = Vector2( 1.53041, 1.53041 )
+text = "4"
+
+[node name="5" type="Label" parent="ItemContainerNumbers"]
+self_modulate = Color( 1, 1, 1, 0.341176 )
+margin_left = 10.0
+margin_top = 38.0
+margin_right = 20.0
+margin_bottom = 52.0
+rect_scale = Vector2( 1.53041, 1.53041 )
+text = "5"
+
+[node name="6" type="Label" parent="ItemContainerNumbers"]
+self_modulate = Color( 1, 1, 1, 0.341176 )
+margin_left = 42.0
+margin_top = 38.0
+margin_right = 52.0
+margin_bottom = 52.0
+rect_scale = Vector2( 1.53041, 1.53041 )
+text = "6"
+
+[node name="7" type="Label" parent="ItemContainerNumbers"]
+self_modulate = Color( 1, 1, 1, 0.341176 )
+margin_left = 74.0
+margin_top = 38.0
+margin_right = 84.0
+margin_bottom = 52.0
+rect_scale = Vector2( 1.53041, 1.53041 )
+text = "7"
+
+[node name="8" type="Label" parent="ItemContainerNumbers"]
+self_modulate = Color( 1, 1, 1, 0.341176 )
+margin_left = 106.0
+margin_top = 38.0
+margin_right = 116.0
+margin_bottom = 52.0
+rect_scale = Vector2( 1.53041, 1.53041 )
+text = "8"
+
+[node name="9" type="Label" parent="ItemContainerNumbers"]
+self_modulate = Color( 1, 1, 1, 0.341176 )
+margin_left = 138.0
+margin_top = 38.0
+margin_right = 148.0
+margin_bottom = 52.0
+rect_scale = Vector2( 1.53041, 1.53041 )
+text = "9"
+
+[node name="10" type="Label" parent="ItemContainerNumbers"]
+self_modulate = Color( 1, 1, 1, 0.341176 )
+margin_left = 4.0
+margin_top = 72.0
+margin_right = 20.0
+margin_bottom = 86.0
+rect_scale = Vector2( 1.53041, 1.53041 )
+text = "10"
+
+[node name="11" type="Label" parent="ItemContainerNumbers"]
+self_modulate = Color( 1, 1, 1, 0.341176 )
+margin_left = 36.0
+margin_top = 72.0
+margin_right = 52.0
+margin_bottom = 86.0
+rect_scale = Vector2( 1.53041, 1.53041 )
+text = "11"
+
+[node name="12" type="Label" parent="ItemContainerNumbers"]
+self_modulate = Color( 1, 1, 1, 0.341176 )
+margin_left = 68.0
+margin_top = 72.0
+margin_right = 84.0
+margin_bottom = 86.0
+rect_scale = Vector2( 1.53041, 1.53041 )
+text = "12"
+
+[node name="13" type="Label" parent="ItemContainerNumbers"]
+self_modulate = Color( 1, 1, 1, 0.341176 )
+margin_left = 100.0
+margin_top = 72.0
+margin_right = 116.0
+margin_bottom = 86.0
+rect_scale = Vector2( 1.53041, 1.53041 )
+text = "13"
+
+[node name="14" type="Label" parent="ItemContainerNumbers"]
+self_modulate = Color( 1, 1, 1, 0.341176 )
+margin_left = 132.0
+margin_top = 72.0
+margin_right = 148.0
+margin_bottom = 86.0
+rect_scale = Vector2( 1.53041, 1.53041 )
+text = "14"
+
+[node name="ItemContainerSquares" type="Control" parent="."]
+editor/display_folded = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Slot_0" type="TextureRect" parent="ItemContainerSquares"]
+editor/display_folded = true
+self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 5 )
+
+[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_0"]
+anims/pulse = SubResource( 1 )
+
+[node name="Slot_1" type="TextureRect" parent="ItemContainerSquares"]
+editor/display_folded = true
+self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
+margin_left = 34.0
+margin_top = 2.0
+margin_right = 64.0
+margin_bottom = 32.0
+texture = ExtResource( 5 )
+
+[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_1"]
+anims/pulse = SubResource( 2 )
+
+[node name="Slot_2" type="TextureRect" parent="ItemContainerSquares"]
+editor/display_folded = true
+self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
+margin_left = 66.0
+margin_top = 2.0
+margin_right = 96.0
+margin_bottom = 32.0
+texture = ExtResource( 5 )
+
+[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_2"]
+anims/pulse = SubResource( 3 )
+
+[node name="Slot_3" type="TextureRect" parent="ItemContainerSquares"]
+editor/display_folded = true
+self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
+margin_left = 98.0
+margin_top = 2.0
+margin_right = 128.0
+margin_bottom = 32.0
+texture = ExtResource( 5 )
+
+[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_3"]
+anims/pulse = SubResource( 4 )
+
+[node name="Slot_4" type="TextureRect" parent="ItemContainerSquares"]
+editor/display_folded = true
+self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
+margin_left = 130.0
+margin_top = 2.0
+margin_right = 160.0
+margin_bottom = 32.0
+texture = ExtResource( 5 )
+
+[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_4"]
+anims/pulse = SubResource( 5 )
+
+[node name="Slot_5" type="TextureRect" parent="ItemContainerSquares"]
+editor/display_folded = true
+self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
+margin_left = 2.0
+margin_top = 34.0
+margin_right = 32.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+
+[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_5"]
+anims/pulse = SubResource( 6 )
+
+[node name="Slot_6" type="TextureRect" parent="ItemContainerSquares"]
+editor/display_folded = true
+self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
+margin_left = 34.0
+margin_top = 34.0
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+
+[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_6"]
+anims/pulse = SubResource( 7 )
+
+[node name="Slot_7" type="TextureRect" parent="ItemContainerSquares"]
+editor/display_folded = true
+self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
+margin_left = 66.0
+margin_top = 34.0
+margin_right = 96.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+
+[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_7"]
+anims/pulse = SubResource( 8 )
+
+[node name="Slot_8" type="TextureRect" parent="ItemContainerSquares"]
+editor/display_folded = true
+self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
+margin_left = 98.0
+margin_top = 34.0
+margin_right = 128.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+
+[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_8"]
+anims/pulse = SubResource( 9 )
+
+[node name="Slot_9" type="TextureRect" parent="ItemContainerSquares"]
+editor/display_folded = true
+self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
+margin_left = 130.0
+margin_top = 34.0
+margin_right = 160.0
+margin_bottom = 64.0
+texture = ExtResource( 5 )
+
+[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_9"]
+anims/pulse = SubResource( 10 )
+
+[node name="Slot_10" type="TextureRect" parent="ItemContainerSquares"]
+editor/display_folded = true
+self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
+margin_left = 2.0
+margin_top = 66.0
+margin_right = 32.0
+margin_bottom = 96.0
+texture = ExtResource( 5 )
+
+[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_10"]
+anims/pulse = SubResource( 11 )
+
+[node name="Slot_11" type="TextureRect" parent="ItemContainerSquares"]
+editor/display_folded = true
+self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
+margin_left = 34.0
+margin_top = 66.0
+margin_right = 64.0
+margin_bottom = 96.0
+texture = ExtResource( 5 )
+
+[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_11"]
+anims/pulse = SubResource( 12 )
+
+[node name="Slot_12" type="TextureRect" parent="ItemContainerSquares"]
+editor/display_folded = true
+self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
+margin_left = 66.0
+margin_top = 66.0
+margin_right = 96.0
+margin_bottom = 96.0
+texture = ExtResource( 5 )
+
+[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_12"]
+anims/pulse = SubResource( 13 )
+
+[node name="Slot_13" type="TextureRect" parent="ItemContainerSquares"]
+editor/display_folded = true
+self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
+margin_left = 98.0
+margin_top = 66.0
+margin_right = 128.0
+margin_bottom = 96.0
+texture = ExtResource( 5 )
+
+[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_13"]
+anims/pulse = SubResource( 14 )
+
+[node name="Slot_14" type="TextureRect" parent="ItemContainerSquares"]
+editor/display_folded = true
+self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
+margin_left = 130.0
+margin_top = 66.0
+margin_right = 160.0
+margin_bottom = 96.0
+texture = ExtResource( 5 )
+
+[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_14"]
+anims/pulse = SubResource( 15 )
+
+[node name="Slot_15" type="TextureRect" parent="ItemContainerSquares"]
+editor/display_folded = true
+self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
+margin_left = 130.0
+margin_top = 66.0
+margin_right = 160.0
+margin_bottom = 96.0
+texture = ExtResource( 5 )
+
+[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_15"]
+anims/pulse = SubResource( 16 )
+
+[node name="Description" type="VBoxContainer" parent="."]
+editor/display_folded = true
+margin_left = 5.0
+margin_top = 101.0
+margin_right = 157.0
+margin_bottom = 141.0
+rect_min_size = Vector2( 152, 45 )
+
+[node name="Label" type="Label" parent="Description"]
+margin_right = 152.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 152, 40 )
+custom_fonts/font = SubResource( 17 )
+text = "Testing the description box forever and ever and ever and here's some more info that pops out of the box sadly and I'll have to figure out how to scroll it so the player can read it all.  -Programmer"
+autowrap = true
+clip_text = true

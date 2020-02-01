@@ -1,25 +1,25 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Box.gd" type="Script" id=1]
-[ext_resource path="res://assets/objects/BoxWood.png" type="Texture" id=2]
+[ext_resource path="res://scenes/BoxCrowbar.gd" type="Script" id=1]
+[ext_resource path="res://assets/objects/BoxCrowbar.png" type="Texture" id=2]
 
-[sub_resource type="OccluderPolygon2D" id=2]
+[sub_resource type="OccluderPolygon2D" id=1]
 cull_mode = 1
 polygon = PoolVector2Array( -8, 12, 8, 12, 8, 0, -8, 0 )
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 8.0
-
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 8 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8, 11 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 15, 17 )
 
-[node name="Box_new" type="StaticBody2D"]
+[sub_resource type="CircleShape2D" id=5]
+radius = 8.0
+
+[node name="BoxCrowbar" type="StaticBody2D"]
 collision_layer = 3
 script = ExtResource( 1 )
 __meta__ = {
@@ -27,31 +27,36 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 1 )
 texture = ExtResource( 2 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
 visible = false
-occluder = SubResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 4 )
-shape = SubResource( 1 )
+occluder = SubResource( 1 )
 
 [node name="detect_body_upper" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_body_upper"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="detect_body_upper"]
+visible = false
 position = Vector2( 0, -4 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="detect_body_lower" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_body_lower"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="detect_body_lower"]
+visible = false
 position = Vector2( 0, 15 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="proximity" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="proximity"]
+visible = false
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 4 )
 shape = SubResource( 5 )
 [connection signal="body_entered" from="detect_body_upper" to="." method="_on_detect_body_upper_body_entered"]
 [connection signal="body_entered" from="detect_body_lower" to="." method="_on_detect_body_lower_body_entered"]

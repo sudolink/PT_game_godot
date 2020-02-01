@@ -1,7 +1,6 @@
 extends StaticBody2D
 
 var description = "Doors are for going through"
-onready var dialog = get_node("../../UI")
 var open = false
 var player_above = false
 
@@ -15,16 +14,8 @@ func _on_UpperRender_body_entered(body):
 		z_index = 10
 		player_above = false
 		
-
-
-
-func interaction():
-	if Input.is_action_just_pressed("ui_interact"):
-		dialog.typeOut(description)
-	elif Input.is_action_just_pressed("use"):
-		attempt_open()
 		
-func attempt_open():
+func use():
 	if not open:
 		if not player_above:
 			$AnimatedSprite/OpenClose.play("OpenDown")
@@ -47,4 +38,3 @@ func _on_proximity_body_entered(body):
 func _on_proximity_body_exited(body):
 	if body.name == "Player":
 		body.ileft(self)
-		dialog.hide()

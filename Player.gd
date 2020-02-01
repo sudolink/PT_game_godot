@@ -17,21 +17,19 @@ onready var inventory = get_node("PlayerInventory")
 
 
 func _physics_process(delta):
-	
+
 	motion = Vector2()
-	
+
 	var moving = allowed_directions()
 	if moving:
 		set_motion(moving)
 	else:
 		set_motion("idle")
-	
+
 	motion.x *= delta*SPEED/2
 	motion.y *= delta*SPEED/2
 	motion = move_and_slide(motion)
 	light_switch()
-	
-	catch_UI_key_presses()
 	
 	if interacting_with:
 		interaction(interacting_with)
@@ -56,8 +54,8 @@ func set_idle(travolta):
 			else:
 				print("WHOOPSIE IN SET_IDLE")
 			is_idle = true
-	
-	
+
+
 func set_motion(dir):
 	if "idle" in dir:
 		motion.y = 0
@@ -130,7 +128,7 @@ func allowed_directions():
 		pressed_list.resize(2)
 		if opposite_directions(pressed_list):
 			pressed_list.resize(0)
-	
+
 	return pressed_list
 
 func opposite_directions(dirlist):
@@ -145,21 +143,16 @@ func opposite_directions(dirlist):
 
 ############## ACTIONS ################
 
-func catch_UI_key_presses():
-	if Input.is_action_just_pressed("inventory"):
-		interface.toggle_inventory()
-
 func light_switch():
 	if Input.is_action_just_pressed("ui_select"):
 		if $circlight.enabled:
 			$circlight.enabled = false
 		else:
 			$circlight.enabled = true
-			
-			
 
 
 ############ TESTING ###################
+
 func interaction(object):
 	if Input.is_action_just_pressed("ui_interact"):
 		interface.typeOut(object.description)
@@ -169,7 +162,7 @@ func interaction(object):
 			inventory.add_to_inventory(picked_up)
 		else:
 			object.use()
-			
+
 func imnear(object):
 	interacting_with = object
 	$InteractionSprite.visible = true
@@ -179,5 +172,6 @@ func ileft(object):
 	interacting_with = null
 	$InteractionSprite.visible = false
 	interface.hide_dialog()
+	get_tree().call_group("action_select_dialog","toggle_action_select")
 	#print("i left ->",object.name)
 
