@@ -1,10 +1,17 @@
 extends StaticBody2D
 
 var description = "It's a wooden box."
-var contents = []
+var contents = [] 
+var available_actions = []
 
 func use():
 	pass
+	
+func actions():
+	return available_actions
+
+func leave():
+	get_tree().call_group("interface","player_left")
 
 func _on_proximity_body_entered(body):
 	if body.name == "Player":

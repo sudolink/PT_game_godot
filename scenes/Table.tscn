@@ -21,13 +21,13 @@ extents = Vector2( 16.0595, 5 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 16, 19 )
 
-[sub_resource type="OccluderPolygon2D" id=7]
+[sub_resource type="OccluderPolygon2D" id=6]
 polygon = PoolVector2Array( -16, 13, -13, 13, -13, 14, -16, 14, -16, 13 )
 
-[sub_resource type="OccluderPolygon2D" id=8]
+[sub_resource type="OccluderPolygon2D" id=7]
 polygon = PoolVector2Array( 13, 13, 16, 13, 16, 14, 13, 14 )
 
-[sub_resource type="OccluderPolygon2D" id=9]
+[sub_resource type="OccluderPolygon2D" id=8]
 polygon = PoolVector2Array( -16, 4, 16, 4, 16, 7, -16, 7 )
 
 [node name="Table" type="StaticBody2D"]
@@ -39,7 +39,6 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 0, 4 )
 z_index = -5
 texture = ExtResource( 2 )
@@ -79,13 +78,13 @@ position = Vector2( 0, 11 )
 shape = SubResource( 5 )
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
-occluder = SubResource( 7 )
+occluder = SubResource( 6 )
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="."]
-occluder = SubResource( 8 )
+occluder = SubResource( 7 )
 
 [node name="LightOccluder2D4" type="LightOccluder2D" parent="."]
-occluder = SubResource( 9 )
+occluder = SubResource( 8 )
 [connection signal="body_entered" from="proximity" to="." method="_on_proximity_body_entered"]
 [connection signal="body_exited" from="proximity" to="." method="_on_proximity_body_exited"]
 [connection signal="body_entered" from="detect_body_upper" to="." method="_on_detect_body_upper_body_entered"]

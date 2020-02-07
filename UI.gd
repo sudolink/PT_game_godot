@@ -6,10 +6,10 @@ onready var action_dialog = $ActionSelect
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	hide_dialog()
 	toggle_inventory()
+	hide_dialog()
 	inventory_display.set_selected_slot()
-	print(inventory_display.selected_slot)
+	self.layer = 1
 	
 
 func _process(delta):
@@ -17,7 +17,7 @@ func _process(delta):
 
 
 func catch_UI_key_presses():
-	if Input.is_action_just_pressed("inventory"):
+	if Input.is_action_just_pressed("inventory") and not dialog.visible:
 		toggle_inventory()
 		get_tree().paused = not get_tree().paused
 	if inventory_display.visible:
@@ -29,21 +29,31 @@ func catch_UI_key_presses():
 			inventory_display.inventory_left()
 		if Input.is_action_just_pressed("inventory_right"):
 			inventory_display.inventory_right()
-	if action_dialog.visible:
-		if Input.is_action_just_pressed("ui_left"):
-			action_dialog.action_left()
-		if Input.is_action_just_pressed("ui_right"):
-			action_dialog.action_right()
+	if dialog.visible:
+		if Input.is_action_just_pressed("ui_down"):
+			dialog.action_down()
+		if Input.is_action_just_pressed("ui_up"):
+			dialog.action_up()
 		if Input.is_action_just_pressed("ui_accept"):
-			action_dialog.action_confirm()
+			dialog.action_confirm()
 
 
-func hide_dialog():
-	dialog.visible = false
 
-func typeOut(text):
-	$"Dialog/text".text = text
-	dialog.visible = not $Dialog.visible
 	
 func toggle_inventory():
 	inventory_display.visible = not inventory_display.visible
+	$DarkenBackground.visible = not $DarkenBackground.visible
+
+func show_dialog():
+	$DarkenBackground.visible = true
+	get_tree().paused = true
+	dialog.visible = true
+
+func hide_dialog():
+	$DarkenBackground.visible = false
+	get_tree().paused = false
+	dialog.visible = false
+	dialog.reset_visible_text()
+
+func player_left():
+	hide_dialog()

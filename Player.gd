@@ -12,7 +12,6 @@ var is_idle = false
 var interacting_with = null
 
 onready var collision_shape = $collision
-onready var interface = get_node("../UI")
 onready var inventory = get_node("PlayerInventory")
 
 
@@ -136,11 +135,6 @@ func opposite_directions(dirlist):
 	return opposites[dirlist[0]] == dirlist[1]
 
 
-
-
-
-
-
 ############## ACTIONS ################
 
 func light_switch():
@@ -155,13 +149,7 @@ func light_switch():
 
 func interaction(object):
 	if Input.is_action_just_pressed("ui_interact"):
-		interface.typeOut(object.description)
-	elif Input.is_action_just_pressed("use"):
-		if "pickupable" in object:
-			var picked_up = object.pick_up()
-			inventory.add_to_inventory(picked_up)
-		else:
-			object.use()
+		get_tree().call_group("dialog","interact_with_object", object.description,object.actions())
 
 func imnear(object):
 	interacting_with = object
@@ -171,7 +159,6 @@ func imnear(object):
 func ileft(object):
 	interacting_with = null
 	$InteractionSprite.visible = false
-	interface.hide_dialog()
-	get_tree().call_group("action_select_dialog","toggle_action_select")
+	get_tree().call_group("interface","player_left")
 	#print("i left ->",object.name)
 

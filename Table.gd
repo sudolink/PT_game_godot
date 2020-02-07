@@ -1,7 +1,10 @@
 extends StaticBody2D
 
 var description = "Watch out, behind you!"
+var available_actions = []
 
+func actions():
+	return available_actions
 
 func _on_proximity_body_entered(body):
 	if body.name == "Player":

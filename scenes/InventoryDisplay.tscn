@@ -1,11 +1,12 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://scenes/InventoryDisplay.gd" type="Script" id=1]
-[ext_resource path="res://assets/blackbg.png" type="Texture" id=2]
-[ext_resource path="res://assets/hud/InventoryFrame.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Test.theme" type="Theme" id=1]
+[ext_resource path="res://scenes/InventoryDisplay.gd" type="Script" id=2]
+[ext_resource path="res://assets/hud/Inventory_new.png" type="Texture" id=3]
 [ext_resource path="res://assets/items/icon_highlight_Crowbar.png" type="Texture" id=4]
 [ext_resource path="res://assets/items/highlight_white_square_edged.png" type="Texture" id=5]
-[ext_resource path="res://assets/FONT/Minecraft.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/FONT/MicroPix (1).ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://scenes/InventoryDescriptionBox.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "pulse"
@@ -245,531 +246,365 @@ tracks/0/keys = {
 "values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "pulse"
-length = 1.5
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.7, 1.4 ),
-"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
-"update": 0,
-"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
-}
-
-[sub_resource type="Animation" id=16]
-resource_name = "pulse"
-length = 1.5
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.7, 1.4 ),
-"transitions": PoolRealArray( 1.23115, 0.203063, 0.225313 ),
-"update": 0,
-"values": [ Color( 0.878431, 0.858824, 0.796078, 1 ), Color( 0.878431, 0.858824, 0.796078, 0 ), Color( 0.878431, 0.858824, 0.796078, 1 ) ]
-}
-
-[sub_resource type="DynamicFont" id=17]
-size = 10
-outline_size = 1
-outline_color = Color( 0.270588, 0.270588, 0.270588, 1 )
+[sub_resource type="DynamicFont" id=15]
+size = 32
 font_data = ExtResource( 6 )
 
 [node name="InventoryDisplay" type="Control" groups=[
 "inventory_display",
 ]]
-script = ExtResource( 1 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 2.0, 32.0 ],
-"_edit_vertical_guides_": [ 2.0, 32.0 ]
+"_edit_horizontal_guides_": [ 12.0, 60.0 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 12.0, 60.0, -32.0 ]
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0.666667 )
-margin_left = -1158.0
-margin_top = -426.0
-margin_right = 846.0
-margin_bottom = 682.0
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 2
-
 [node name="Background" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 4, 4 )
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ItemContainer" type="Control" parent="."]
-editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Slot_0" type="TextureRect" parent="ItemContainer"]
-margin_left = 2.0
-margin_top = 2.0
-margin_right = 32.0
-margin_bottom = 32.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 62.0
+margin_bottom = 62.0
 texture = ExtResource( 4 )
+expand = true
 
 [node name="Slot_1" type="TextureRect" parent="ItemContainer"]
-margin_left = 34.0
-margin_top = 2.0
-margin_right = 64.0
-margin_bottom = 32.0
+margin_left = 74.0
+margin_top = 10.0
+margin_right = 126.0
+margin_bottom = 62.0
 texture = ExtResource( 4 )
+expand = true
 
 [node name="Slot_2" type="TextureRect" parent="ItemContainer"]
-margin_left = 66.0
-margin_top = 2.0
-margin_right = 96.0
-margin_bottom = 32.0
+margin_left = 138.0
+margin_top = 10.0
+margin_right = 190.0
+margin_bottom = 62.0
 texture = ExtResource( 4 )
+expand = true
 
 [node name="Slot_3" type="TextureRect" parent="ItemContainer"]
-margin_left = 98.0
-margin_top = 2.0
-margin_right = 128.0
-margin_bottom = 32.0
+margin_left = 202.0
+margin_top = 10.0
+margin_right = 254.0
+margin_bottom = 62.0
 texture = ExtResource( 4 )
+expand = true
 
 [node name="Slot_4" type="TextureRect" parent="ItemContainer"]
-margin_left = 130.0
-margin_top = 2.0
-margin_right = 160.0
-margin_bottom = 32.0
+margin_left = 266.0
+margin_top = 10.0
+margin_right = 318.0
+margin_bottom = 62.0
 texture = ExtResource( 4 )
+expand = true
 
 [node name="Slot_5" type="TextureRect" parent="ItemContainer"]
-margin_left = 2.0
-margin_top = 34.0
-margin_right = 32.0
-margin_bottom = 64.0
+margin_left = 330.0
+margin_top = 10.0
+margin_right = 382.0
+margin_bottom = 62.0
 texture = ExtResource( 4 )
+expand = true
 
 [node name="Slot_6" type="TextureRect" parent="ItemContainer"]
-margin_left = 34.0
-margin_top = 34.0
-margin_right = 64.0
-margin_bottom = 64.0
+margin_left = 394.0
+margin_top = 10.0
+margin_right = 446.0
+margin_bottom = 62.0
 texture = ExtResource( 4 )
+expand = true
 
 [node name="Slot_7" type="TextureRect" parent="ItemContainer"]
-margin_left = 66.0
-margin_top = 34.0
-margin_right = 96.0
-margin_bottom = 64.0
+margin_left = 10.0
+margin_top = 74.0
+margin_right = 62.0
+margin_bottom = 126.0
 texture = ExtResource( 4 )
+expand = true
 
 [node name="Slot_8" type="TextureRect" parent="ItemContainer"]
-margin_left = 98.0
-margin_top = 34.0
-margin_right = 128.0
-margin_bottom = 64.0
+margin_left = 74.0
+margin_top = 74.0
+margin_right = 126.0
+margin_bottom = 126.0
 texture = ExtResource( 4 )
+expand = true
 
 [node name="Slot_9" type="TextureRect" parent="ItemContainer"]
-margin_left = 130.0
-margin_top = 34.0
-margin_right = 160.0
-margin_bottom = 64.0
+margin_left = 138.0
+margin_top = 74.0
+margin_right = 190.0
+margin_bottom = 126.0
 texture = ExtResource( 4 )
+expand = true
 
 [node name="Slot_10" type="TextureRect" parent="ItemContainer"]
-margin_left = 2.0
-margin_top = 66.0
-margin_right = 32.0
-margin_bottom = 96.0
+margin_left = 202.0
+margin_top = 74.0
+margin_right = 254.0
+margin_bottom = 126.0
 texture = ExtResource( 4 )
+expand = true
 
 [node name="Slot_11" type="TextureRect" parent="ItemContainer"]
-margin_left = 34.0
-margin_top = 66.0
-margin_right = 64.0
-margin_bottom = 96.0
+margin_left = 266.0
+margin_top = 74.0
+margin_right = 318.0
+margin_bottom = 126.0
 texture = ExtResource( 4 )
+expand = true
 
 [node name="Slot_12" type="TextureRect" parent="ItemContainer"]
-margin_left = 66.0
-margin_top = 66.0
-margin_right = 96.0
-margin_bottom = 96.0
+margin_left = 330.0
+margin_top = 74.0
+margin_right = 382.0
+margin_bottom = 126.0
 texture = ExtResource( 4 )
+expand = true
 
 [node name="Slot_13" type="TextureRect" parent="ItemContainer"]
-margin_left = 98.0
-margin_top = 66.0
-margin_right = 128.0
-margin_bottom = 96.0
+margin_left = 394.0
+margin_top = 74.0
+margin_right = 446.0
+margin_bottom = 126.0
 texture = ExtResource( 4 )
-
-[node name="Slot_14" type="TextureRect" parent="ItemContainer"]
-margin_left = 130.0
-margin_top = 66.0
-margin_right = 160.0
-margin_bottom = 96.0
-texture = ExtResource( 4 )
-
-[node name="ItemContainerNumbers" type="Control" parent="."]
-editor/display_folded = true
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-
-[node name="0" type="Label" parent="ItemContainerNumbers"]
-self_modulate = Color( 1, 1, 1, 0.341176 )
-margin_left = 10.0
-margin_top = 6.0
-margin_right = 20.0
-margin_bottom = 20.0
-rect_scale = Vector2( 1.53041, 1.53041 )
-text = "0"
-
-[node name="1" type="Label" parent="ItemContainerNumbers"]
-self_modulate = Color( 1, 1, 1, 0.341176 )
-margin_left = 42.0
-margin_top = 6.0
-margin_right = 52.0
-margin_bottom = 20.0
-rect_scale = Vector2( 1.53041, 1.53041 )
-text = "1"
-
-[node name="2" type="Label" parent="ItemContainerNumbers"]
-self_modulate = Color( 1, 1, 1, 0.341176 )
-margin_left = 74.0
-margin_top = 6.0
-margin_right = 84.0
-margin_bottom = 20.0
-rect_scale = Vector2( 1.53041, 1.53041 )
-text = "2"
-
-[node name="3" type="Label" parent="ItemContainerNumbers"]
-self_modulate = Color( 1, 1, 1, 0.341176 )
-margin_left = 106.0
-margin_top = 6.0
-margin_right = 116.0
-margin_bottom = 20.0
-rect_scale = Vector2( 1.53041, 1.53041 )
-text = "3"
-
-[node name="4" type="Label" parent="ItemContainerNumbers"]
-self_modulate = Color( 1, 1, 1, 0.341176 )
-margin_left = 138.0
-margin_top = 6.0
-margin_right = 148.0
-margin_bottom = 20.0
-rect_scale = Vector2( 1.53041, 1.53041 )
-text = "4"
-
-[node name="5" type="Label" parent="ItemContainerNumbers"]
-self_modulate = Color( 1, 1, 1, 0.341176 )
-margin_left = 10.0
-margin_top = 38.0
-margin_right = 20.0
-margin_bottom = 52.0
-rect_scale = Vector2( 1.53041, 1.53041 )
-text = "5"
-
-[node name="6" type="Label" parent="ItemContainerNumbers"]
-self_modulate = Color( 1, 1, 1, 0.341176 )
-margin_left = 42.0
-margin_top = 38.0
-margin_right = 52.0
-margin_bottom = 52.0
-rect_scale = Vector2( 1.53041, 1.53041 )
-text = "6"
-
-[node name="7" type="Label" parent="ItemContainerNumbers"]
-self_modulate = Color( 1, 1, 1, 0.341176 )
-margin_left = 74.0
-margin_top = 38.0
-margin_right = 84.0
-margin_bottom = 52.0
-rect_scale = Vector2( 1.53041, 1.53041 )
-text = "7"
-
-[node name="8" type="Label" parent="ItemContainerNumbers"]
-self_modulate = Color( 1, 1, 1, 0.341176 )
-margin_left = 106.0
-margin_top = 38.0
-margin_right = 116.0
-margin_bottom = 52.0
-rect_scale = Vector2( 1.53041, 1.53041 )
-text = "8"
-
-[node name="9" type="Label" parent="ItemContainerNumbers"]
-self_modulate = Color( 1, 1, 1, 0.341176 )
-margin_left = 138.0
-margin_top = 38.0
-margin_right = 148.0
-margin_bottom = 52.0
-rect_scale = Vector2( 1.53041, 1.53041 )
-text = "9"
-
-[node name="10" type="Label" parent="ItemContainerNumbers"]
-self_modulate = Color( 1, 1, 1, 0.341176 )
-margin_left = 4.0
-margin_top = 72.0
-margin_right = 20.0
-margin_bottom = 86.0
-rect_scale = Vector2( 1.53041, 1.53041 )
-text = "10"
-
-[node name="11" type="Label" parent="ItemContainerNumbers"]
-self_modulate = Color( 1, 1, 1, 0.341176 )
-margin_left = 36.0
-margin_top = 72.0
-margin_right = 52.0
-margin_bottom = 86.0
-rect_scale = Vector2( 1.53041, 1.53041 )
-text = "11"
-
-[node name="12" type="Label" parent="ItemContainerNumbers"]
-self_modulate = Color( 1, 1, 1, 0.341176 )
-margin_left = 68.0
-margin_top = 72.0
-margin_right = 84.0
-margin_bottom = 86.0
-rect_scale = Vector2( 1.53041, 1.53041 )
-text = "12"
-
-[node name="13" type="Label" parent="ItemContainerNumbers"]
-self_modulate = Color( 1, 1, 1, 0.341176 )
-margin_left = 100.0
-margin_top = 72.0
-margin_right = 116.0
-margin_bottom = 86.0
-rect_scale = Vector2( 1.53041, 1.53041 )
-text = "13"
-
-[node name="14" type="Label" parent="ItemContainerNumbers"]
-self_modulate = Color( 1, 1, 1, 0.341176 )
-margin_left = 132.0
-margin_top = 72.0
-margin_right = 148.0
-margin_bottom = 86.0
-rect_scale = Vector2( 1.53041, 1.53041 )
-text = "14"
+expand = true
 
 [node name="ItemContainerSquares" type="Control" parent="."]
-editor/display_folded = true
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 50.0
+margin_top = 150.0
+margin_right = 90.0
+margin_bottom = 190.0
 
 [node name="Slot_0" type="TextureRect" parent="ItemContainerSquares"]
-editor/display_folded = true
 self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
-margin_left = 2.0
-margin_top = 2.0
-margin_right = 32.0
-margin_bottom = 32.0
+margin_left = -42.0
+margin_top = -142.0
+margin_right = 14.0
+margin_bottom = -86.0
 texture = ExtResource( 5 )
+expand = true
 
 [node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_0"]
 anims/pulse = SubResource( 1 )
 
 [node name="Slot_1" type="TextureRect" parent="ItemContainerSquares"]
-editor/display_folded = true
 self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
-margin_left = 34.0
-margin_top = 2.0
-margin_right = 64.0
-margin_bottom = 32.0
+margin_left = 22.0
+margin_top = -142.0
+margin_right = 78.0
+margin_bottom = -86.0
 texture = ExtResource( 5 )
+expand = true
 
 [node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_1"]
 anims/pulse = SubResource( 2 )
 
 [node name="Slot_2" type="TextureRect" parent="ItemContainerSquares"]
-editor/display_folded = true
 self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
-margin_left = 66.0
-margin_top = 2.0
-margin_right = 96.0
-margin_bottom = 32.0
+margin_left = 86.0
+margin_top = -142.0
+margin_right = 142.0
+margin_bottom = -86.0
 texture = ExtResource( 5 )
+expand = true
 
 [node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_2"]
 anims/pulse = SubResource( 3 )
 
 [node name="Slot_3" type="TextureRect" parent="ItemContainerSquares"]
-editor/display_folded = true
 self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
-margin_left = 98.0
-margin_top = 2.0
-margin_right = 128.0
-margin_bottom = 32.0
+margin_left = 150.0
+margin_top = -142.0
+margin_right = 206.0
+margin_bottom = -86.0
 texture = ExtResource( 5 )
+expand = true
 
 [node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_3"]
 anims/pulse = SubResource( 4 )
 
 [node name="Slot_4" type="TextureRect" parent="ItemContainerSquares"]
-editor/display_folded = true
 self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
-margin_left = 130.0
-margin_top = 2.0
-margin_right = 160.0
-margin_bottom = 32.0
+margin_left = 214.0
+margin_top = -142.0
+margin_right = 270.0
+margin_bottom = -86.0
 texture = ExtResource( 5 )
+expand = true
 
 [node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_4"]
 anims/pulse = SubResource( 5 )
 
 [node name="Slot_5" type="TextureRect" parent="ItemContainerSquares"]
-editor/display_folded = true
 self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
-margin_left = 2.0
-margin_top = 34.0
-margin_right = 32.0
-margin_bottom = 64.0
+margin_left = 278.0
+margin_top = -142.0
+margin_right = 334.0
+margin_bottom = -86.0
 texture = ExtResource( 5 )
+expand = true
 
 [node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_5"]
 anims/pulse = SubResource( 6 )
 
 [node name="Slot_6" type="TextureRect" parent="ItemContainerSquares"]
-editor/display_folded = true
 self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
-margin_left = 34.0
-margin_top = 34.0
-margin_right = 64.0
-margin_bottom = 64.0
+margin_left = 342.0
+margin_top = -142.0
+margin_right = 398.0
+margin_bottom = -86.0
 texture = ExtResource( 5 )
+expand = true
 
 [node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_6"]
 anims/pulse = SubResource( 7 )
 
 [node name="Slot_7" type="TextureRect" parent="ItemContainerSquares"]
-editor/display_folded = true
 self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
-margin_left = 66.0
-margin_top = 34.0
-margin_right = 96.0
-margin_bottom = 64.0
+margin_left = -42.0
+margin_top = -78.0
+margin_right = 14.0
+margin_bottom = -22.0
 texture = ExtResource( 5 )
+expand = true
 
 [node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_7"]
 anims/pulse = SubResource( 8 )
 
 [node name="Slot_8" type="TextureRect" parent="ItemContainerSquares"]
-editor/display_folded = true
 self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
-margin_left = 98.0
-margin_top = 34.0
-margin_right = 128.0
-margin_bottom = 64.0
+margin_left = 22.0
+margin_top = -78.0
+margin_right = 78.0
+margin_bottom = -22.0
 texture = ExtResource( 5 )
+expand = true
 
 [node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_8"]
 anims/pulse = SubResource( 9 )
 
 [node name="Slot_9" type="TextureRect" parent="ItemContainerSquares"]
-editor/display_folded = true
 self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
-margin_left = 130.0
-margin_top = 34.0
-margin_right = 160.0
-margin_bottom = 64.0
+margin_left = 86.0
+margin_top = -78.0
+margin_right = 142.0
+margin_bottom = -22.0
 texture = ExtResource( 5 )
+expand = true
 
 [node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_9"]
 anims/pulse = SubResource( 10 )
 
 [node name="Slot_10" type="TextureRect" parent="ItemContainerSquares"]
-editor/display_folded = true
 self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
-margin_left = 2.0
-margin_top = 66.0
-margin_right = 32.0
-margin_bottom = 96.0
+margin_left = 150.0
+margin_top = -78.0
+margin_right = 206.0
+margin_bottom = -22.0
 texture = ExtResource( 5 )
+expand = true
 
 [node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_10"]
 anims/pulse = SubResource( 11 )
 
 [node name="Slot_11" type="TextureRect" parent="ItemContainerSquares"]
-editor/display_folded = true
 self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
-margin_left = 34.0
-margin_top = 66.0
-margin_right = 64.0
-margin_bottom = 96.0
+margin_left = 214.0
+margin_top = -78.0
+margin_right = 270.0
+margin_bottom = -22.0
 texture = ExtResource( 5 )
+expand = true
 
 [node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_11"]
 anims/pulse = SubResource( 12 )
 
 [node name="Slot_12" type="TextureRect" parent="ItemContainerSquares"]
-editor/display_folded = true
 self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
-margin_left = 66.0
-margin_top = 66.0
-margin_right = 96.0
-margin_bottom = 96.0
+margin_left = 278.0
+margin_top = -78.0
+margin_right = 334.0
+margin_bottom = -22.0
 texture = ExtResource( 5 )
+expand = true
 
 [node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_12"]
 anims/pulse = SubResource( 13 )
 
 [node name="Slot_13" type="TextureRect" parent="ItemContainerSquares"]
-editor/display_folded = true
 self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
-margin_left = 98.0
-margin_top = 66.0
-margin_right = 128.0
-margin_bottom = 96.0
+margin_left = 342.0
+margin_top = -78.0
+margin_right = 398.0
+margin_bottom = -22.0
 texture = ExtResource( 5 )
+expand = true
 
 [node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_13"]
 anims/pulse = SubResource( 14 )
 
-[node name="Slot_14" type="TextureRect" parent="ItemContainerSquares"]
-editor/display_folded = true
-self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
-margin_left = 130.0
-margin_top = 66.0
-margin_right = 160.0
-margin_bottom = 96.0
-texture = ExtResource( 5 )
+[node name="Description" type="Control" parent="."]
+margin_left = 26.0
+margin_top = 143.0
+margin_right = 434.0
+margin_bottom = 316.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_14"]
-anims/pulse = SubResource( 15 )
-
-[node name="Slot_15" type="TextureRect" parent="ItemContainerSquares"]
-editor/display_folded = true
-self_modulate = Color( 0.878431, 0.858824, 0.796078, 1 )
-margin_left = 130.0
-margin_top = 66.0
-margin_right = 160.0
-margin_bottom = 96.0
-texture = ExtResource( 5 )
-
-[node name="slowpulse" type="AnimationPlayer" parent="ItemContainerSquares/Slot_15"]
-anims/pulse = SubResource( 16 )
-
-[node name="Description" type="VBoxContainer" parent="."]
-editor/display_folded = true
-margin_left = 5.0
-margin_top = 101.0
-margin_right = 157.0
-margin_bottom = 141.0
-rect_min_size = Vector2( 152, 45 )
-
-[node name="Label" type="Label" parent="Description"]
-margin_right = 152.0
-margin_bottom = 40.0
+[node name="Text" type="Label" parent="Description"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 7.0
+margin_bottom = -63.0
 rect_min_size = Vector2( 152, 40 )
-custom_fonts/font = SubResource( 17 )
-text = "Testing the description box forever and ever and ever and here's some more info that pops out of the box sadly and I'll have to figure out how to scroll it so the player can read it all.  -Programmer"
+custom_fonts/font = SubResource( 15 )
+custom_constants/line_spacing = 0
+text = "Cheese fondue. 
+Oh, to dip crusty bread into that sweet, sticky mess, reaching for dat salty slice of prosciutto, full of anticipation of the culmination of their perfect union exploding on your taste buds."
 autowrap = true
 clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Actions" type="HBoxContainer" parent="."]
+margin_left = 22.0
+margin_top = 278.0
+margin_right = 432.0
+margin_bottom = 311.0
+custom_constants/separation = 22
+alignment = 1
+
+[node name="Use" type="Label" parent="Actions"]
+margin_left = 105.0
+margin_right = 179.0
+margin_bottom = 33.0
+text = "Use Item"
+
+[node name="Inspect" type="Label" parent="Actions"]
+margin_left = 201.0
+margin_right = 305.0
+margin_bottom = 33.0
+text = "Inspect item"

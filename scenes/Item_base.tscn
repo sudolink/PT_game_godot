@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/Crowbar.gd" type="Script" id=1]
-[ext_resource path="res://assets/items/icon_highlight_Crowbar.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Item.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 12 )
@@ -9,7 +9,7 @@ extents = Vector2( 12, 12 )
 [sub_resource type="CircleShape2D" id=2]
 radius = 16.0
 
-[node name="Crowbar" type="RigidBody2D"]
+[node name="Item" type="RigidBody2D"]
 collision_layer = 8
 collision_mask = 15
 script = ExtResource( 1 )
@@ -19,7 +19,8 @@ scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 
 [node name="OnFloor" type="Sprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 0, 1.02179e-07 )
+scale = Vector2( 0.25, 0.21875 )
 texture = ExtResource( 2 )
 
 [node name="proximity" type="Area2D" parent="."]
