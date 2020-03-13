@@ -1,0 +1,422 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31.3749, 31.2463 )
+
+[node name="test" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 301.801, 158.039 )
+
+[node name="NiggerGroup" type="Node2D" parent="."]
+
+[node name="nigger1" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 30.9511, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger1"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger1"]
+shape = SubResource( 1 )
+
+[node name="nigger2" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 96, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger2"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger2"]
+shape = SubResource( 1 )
+
+[node name="nigger3" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 160, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger3"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger3"]
+shape = SubResource( 1 )
+
+[node name="nigger4" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 224, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger4"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger4"]
+shape = SubResource( 1 )
+
+[node name="nigger5" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 288, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger5"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger5"]
+shape = SubResource( 1 )
+
+[node name="nigger6" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 352, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger6"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger6"]
+shape = SubResource( 1 )
+
+[node name="nigger7" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 416, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger7"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger7"]
+shape = SubResource( 1 )
+
+[node name="nigger8" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 480, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger8"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger8"]
+shape = SubResource( 1 )
+
+[node name="nigger9" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 544, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger9"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger9"]
+shape = SubResource( 1 )
+
+[node name="nigger10" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 544, 96 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger10"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger10"]
+shape = SubResource( 1 )
+
+[node name="nigger11" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 480, 96 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger11"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger11"]
+shape = SubResource( 1 )
+
+[node name="nigger12" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 416, 96 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger12"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger12"]
+shape = SubResource( 1 )
+
+[node name="nigger13" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 352, 96 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger13"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger13"]
+shape = SubResource( 1 )
+
+[node name="nigger14" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 299.726, 96 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger14"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger14"]
+shape = SubResource( 1 )
+
+[node name="nigger15" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 240, 96 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger15"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger15"]
+shape = SubResource( 1 )
+
+[node name="nigger16" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 176, 96 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger16"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger16"]
+shape = SubResource( 1 )
+
+[node name="nigger17" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 112, 96 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger17"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger17"]
+shape = SubResource( 1 )
+
+[node name="nigger18" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 48, 96 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger18"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger18"]
+shape = SubResource( 1 )
+
+[node name="nigger19" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 30.9511, 158.039 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger19"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger19"]
+shape = SubResource( 1 )
+
+[node name="nigger20" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 96, 158.039 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger20"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger20"]
+shape = SubResource( 1 )
+
+[node name="nigger21" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 160, 158.039 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger21"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger21"]
+shape = SubResource( 1 )
+
+[node name="nigger22" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 224, 158.039 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger22"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger22"]
+shape = SubResource( 1 )
+
+[node name="nigger25" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 416, 160 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger25"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger25"]
+shape = SubResource( 1 )
+
+[node name="nigger26" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 480, 160 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger26"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger26"]
+shape = SubResource( 1 )
+
+[node name="nigger27" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 544, 160 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger27"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger27"]
+shape = SubResource( 1 )
+
+[node name="nigger28" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 544, 224 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger28"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger28"]
+shape = SubResource( 1 )
+
+[node name="nigger29" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 480, 224 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger29"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger29"]
+shape = SubResource( 1 )
+
+[node name="nigger30" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 416, 224 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger30"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger30"]
+shape = SubResource( 1 )
+
+[node name="nigger31" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 352, 224 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger31"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger31"]
+shape = SubResource( 1 )
+
+[node name="nigger32" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 293.801, 224 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger32"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger32"]
+shape = SubResource( 1 )
+
+[node name="nigger33" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 224, 224 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger33"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger33"]
+shape = SubResource( 1 )
+
+[node name="nigger34" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 160, 224 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger34"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger34"]
+shape = SubResource( 1 )
+
+[node name="nigger35" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 96, 224 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger35"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger35"]
+shape = SubResource( 1 )
+
+[node name="nigger36" type="StaticBody2D" parent="NiggerGroup"]
+position = Vector2( 32, 224 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="nigger0" type="Sprite" parent="NiggerGroup/nigger36"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NiggerGroup/nigger36"]
+shape = SubResource( 1 )

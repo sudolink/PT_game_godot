@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Table.gd" type="Script" id=1]
 [ext_resource path="res://assets/objects/Table_old.png" type="Texture" id=2]
-[ext_resource path="res://Area2D.gd" type="Script" id=3]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 cull_mode = 2
@@ -44,7 +43,6 @@ z_index = -5
 texture = ExtResource( 2 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
-visible = false
 occluder = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -55,14 +53,11 @@ shape = SubResource( 2 )
 
 [node name="proximity" type="Area2D" parent="."]
 position = Vector2( -0.0595399, 3 )
-script = ExtResource( 3 )
 
 [node name="prox_collision" type="CollisionShape2D" parent="proximity"]
-visible = false
 shape = SubResource( 3 )
 
 [node name="detect_body_upper" type="Area2D" parent="."]
-visible = false
 position = Vector2( 0, -12 )
 
 [node name="check_pos" type="CollisionShape2D" parent="detect_body_upper"]
@@ -70,7 +65,6 @@ position = Vector2( 0, 11 )
 shape = SubResource( 4 )
 
 [node name="detect_body_lower" type="Area2D" parent="."]
-visible = false
 position = Vector2( 0, 12 )
 
 [node name="check_pos2" type="CollisionShape2D" parent="detect_body_lower"]

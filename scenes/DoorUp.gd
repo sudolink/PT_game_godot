@@ -17,24 +17,23 @@ func _on_UpperRender_body_entered(body):
 		
 func use():
 	if not open:
-		if not player_above:
-			$AnimatedSprite/OpenClose.play("OpenDown")
-			open = true
-		else:
-			$AnimatedSprite/OpenClose.play("OpenUp")
-			open = true
+		$AnimatedSprite/OpenClose.play("OpenDown")
+		open = true
 	else:
-		if $AnimatedSprite.animation == "OpenDown":
-			$AnimatedSprite/OpenClose.play("CloseUp")
-			open = false
-		else:
-			$AnimatedSprite/OpenClose.play("CloseDown")
-			open = false
+		$AnimatedSprite/OpenClose.play("CloseUp")
+		open = false
+#	if not open:
+#		if not player_above:
+#			$AnimatedSprite/OpenClose.play("OpenDown")
+#			open = true
+#		else:
+#			$AnimatedSprite/OpenClose.play("OpenUp")
+#			open = true
+#	else:
+#		if $AnimatedSprite.animation == "OpenDown":
+#			$AnimatedSprite/OpenClose.play("CloseUp")
+#			open = false
+#		else:
+#			$AnimatedSprite/OpenClose.play("CloseDown")
+#			open = false
 
-func _on_proximity_body_entered(body):
-	if body.name == "Player":
-		body.imnear(self)
-
-func _on_proximity_body_exited(body):
-	if body.name == "Player":
-		body.ileft(self)

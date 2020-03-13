@@ -8,7 +8,7 @@ const SCROLL_VALUE = 80
 func _ready():
 	current_scroll = 0
 	previous_scroll = 0
-	print(get_last_line_number())
+	print("last line number: ",get_last_line_number()," --printing from DialogText.gd")
 
 func scroll():
 	#scroll_to_line
@@ -18,11 +18,20 @@ func scroll():
 	if previous_scroll > current_scroll:
 		get_tree().call_group("dialog","text_end")
 
+func get_last_line_number():
+	return $TextBox.text.split("\n").size()
+
+func set_text(text):
+	self.text = text
+	if get_last_line_number() > 3:
+		print("\n Lines in description > 3: ", get_last_line_number())
+
+func reset():
+	$TextBox.percent_visible = 0
+	reset_scroll()
+
 func reset_scroll():
 	current_scroll = 0
 	previous_scroll = 0
 	get_v_scrollbar().value = current_scroll
 	
-
-func get_last_line_number():
-	return $TextBox.text.split("\n").size()

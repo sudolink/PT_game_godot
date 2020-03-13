@@ -2,7 +2,9 @@
 
 [ext_resource path="res://scenes/PlayerInventory.gd" type="Script" id=1]
 
-[node name="PlayerInventory" type="Node2D"]
+[node name="PlayerInventory" type="Node2D" groups=[
+"player_inventory",
+]]
 visible = false
 script = ExtResource( 1 )
 

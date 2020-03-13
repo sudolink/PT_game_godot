@@ -6,6 +6,8 @@ const DSPEED = SPEED * 0.7
 const DIRECTIONS = ["ui_left","ui_right","ui_down","ui_up"]
 const DIR_ACTION = {"ui_left":[-SPEED,0],"ui_right":[SPEED,0],"ui_up":[0,-SPEED],"ui_down":[0,SPEED]}
 
+
+signal direction_change(new_direction)
 var motion = Vector2()
 var direction = "up"
 var is_idle = false
@@ -13,10 +15,17 @@ var interacting_with = null
 
 onready var collision_shape = $collision
 onready var inventory = get_node("PlayerInventory")
+onready var interaction_ray = $InteractionRay
+
+
+func _ready():
+	return connect("direction_change",interaction_ray,"direction_changed")
 
 
 func _physics_process(delta):
-
+	update()
+	interaction_ray.force_raycast_update()
+	
 	motion = Vector2()
 
 	var moving = allowed_directions()
@@ -33,6 +42,8 @@ func _physics_process(delta):
 	if interacting_with:
 		interaction(interacting_with)
 
+func _draw():
+	draw_line(interaction_ray.ray_offset, interaction_ray.cast_to+interaction_ray.ray_offset, Color(255, 0, 0), 1)
 
 func set_idle(travolta):
 	if travolta == "johntravolta":
@@ -44,12 +55,18 @@ func set_idle(travolta):
 				$Sprite.frame = 0
 			elif direction == "down":
 				$Sprite.frame = 6
-			elif direction == "left" or direction == "right":
+			elif direction == "left":
 				$Sprite.frame = 4
-			elif direction == "upleft" or direction == "upright":
+			elif direction == "right":
+				$Sprite.frame = 5
+			elif direction == "upleft":
 				$Sprite.frame = 1
-			elif direction == "downleft" or direction == "downright":
+			elif direction == "upright":
+				$Sprite.frame = 2
+			elif direction == "downleft":
 				$Sprite.frame = 7
+			elif direction == "downright":
+				$Sprite.frame = 6
 			else:
 				print("WHOOPSIE IN SET_IDLE")
 			is_idle = true
@@ -65,14 +82,12 @@ func set_motion(dir):
 			if "ui_left" in dir:
 				motion.x = -DSPEED
 				motion.y = -DSPEED
-				$Sprite.flip_h = false
-				$Sprite.play("upDiag")
+				$Sprite.play("upLeftDiag")
 				direction = "upleft"
 			elif "ui_right" in dir:
 				motion.x = DSPEED
 				motion.y = -DSPEED
-				$Sprite.flip_h = true
-				$Sprite.play("upDiag")
+				$Sprite.play("upRightDiag")
 				direction = "upright"
 			else:
 				motion.y = -SPEED
@@ -83,14 +98,12 @@ func set_motion(dir):
 			if "ui_left" in dir:
 				motion.x = -DSPEED
 				motion.y = DSPEED
-				$Sprite.flip_h = false
-				$Sprite.play("downDiag")
+				$Sprite.play("downLeftDiag")
 				direction = "downleft"
 			elif "ui_right" in dir:
 				motion.x = DSPEED
 				motion.y = DSPEED
-				$Sprite.flip_h = true
-				$Sprite.play("downDiag")
+				$Sprite.play("downRightDiag")
 				direction = "downright"
 			else:
 				motion.y = SPEED
@@ -99,17 +112,17 @@ func set_motion(dir):
 				direction = "down"
 		elif "ui_left" in dir:
 			motion.x = -SPEED
-			$Sprite.flip_h = false
-			$Sprite.play("hWalk")
+			$Sprite.play("leftWalk")
 			set_collision_shape(10,4)
 			direction = "left"
 		elif "ui_right" in dir:
 			motion.x = SPEED
-			$Sprite.flip_h = true
-			$Sprite.play("hWalk")
+			$Sprite.play("rightWalk")
 			set_collision_shape(10,4)
 			direction = "right"
 		is_idle = false
+		emit_signal("direction_change",direction)
+		
 
 func set_collision_shape(x,y):
 	var new_shape = RectangleShape2D.new()
@@ -145,20 +158,26 @@ func light_switch():
 			$circlight.enabled = true
 
 
-############ TESTING ###################
+############ INTERACTION ###################
+
+func interaction_distance(object):
+	return self.global_position.distance_to(object.global_position) < 40
 
 func interaction(object):
 	if Input.is_action_just_pressed("ui_interact"):
-		get_tree().call_group("dialog","interact_with_object", object.description,object.actions())
+		if interaction_distance(object):
+			#if object is intended to be interacted with through the dialog, then proceed to send its details to the dialog
+			if object.has_method("actions"):
+				get_tree().call_group("dialog","interact_with_object", self, object, object.actions())
+			else:
+			#if it does not, then it has to have the use function, which only performs one action - go ahead and perform that (door opening/closing, crowbarring stuff)
+				object.use(self)
+		else:
+			print("not close enough!")
 
-func imnear(object):
+func met_interactable(object):
 	interacting_with = object
-	$InteractionSprite.visible = true
-	#print("I'm near ->",object.name)
+	get_tree().call_group("interface","see_an_object", interacting_with)
 
-func ileft(object):
-	interacting_with = null
-	$InteractionSprite.visible = false
-	get_tree().call_group("interface","player_left")
-	#print("i left ->",object.name)
-
+func has_crowbar():
+	return inventory.has_item("Crowbar")

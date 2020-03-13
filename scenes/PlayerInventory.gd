@@ -2,7 +2,6 @@ extends Node2D
 
 var max_size
 var slot_nodes
-var ui
 ############## INVENTORY ##################
 signal inventory_change
 
@@ -18,3 +17,11 @@ func add_to_inventory(item):
 			print("Picked up %s, now in slot %s." % [item.name,slot.name])
 			get_tree().call_group("inventory_display","update_inventory_contents",get_children())
 			break
+
+func has_item(item_name):
+	for slot in slot_nodes:
+		if slot.get_child_count() > 0:
+			if slot.get_child(0).name == item_name:
+				return true
+	return false
+	

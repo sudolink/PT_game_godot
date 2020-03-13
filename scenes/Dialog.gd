@@ -1,17 +1,16 @@
 extends Control
 
 const SCROLL_SPEED = 0.5
-
-var selectables = []
+var interacting_with = null
+onready var action_scroll = $ActionScroll/VBoxContainer
+onready var description_window = $DialogText/TextBox
 
 func _ready():
 	$DialogText/TextBox.percent_visible = 0
-	
 
 func _process(delta):
 	if self.visible:
 		text_effect(delta)
-
 
 
 ###### TEXT EFFECTS
@@ -19,38 +18,86 @@ func text_effect(delta):
 							#FIX THIS, COMES IN FASTER THE MORE TEXT THERE IS, AND SLOWER, THE LESS THERE IS
 	if $DialogText/TextBox.percent_visible != 1:
 		$DialogText/TextBox.percent_visible += delta * SCROLL_SPEED
-		
-func reset_visible_text():
-	$DialogText/TextBox.percent_visible = 0
+
+
+##### RESET DIALOG VARIABLES AND TOGGLES
+func reset():
+	#reset DialogText/TextBox scroll value, and visibility
+	$DialogText.reset()
 
 
 
-##### 
-
-func interact_with_object(description,actions):
-	#set textbox's text to description
-	#make instantiated action buttons from the ActionButton scene, change their text
-	#for action in actions:
-	#action_button = ActionButton.new(buttontext, action)
-	#append action button to $ActionScroll/VboxContainer
-	$DialogText/TextBox.text = description
-	for action in actions:
-		var new_button = load("res://scenes/ActionButton.tscn").instance()
-		new_button.text = action
-		$ActionScroll/VBoxContainer.add_child(new_button)
-	print(description, actions)
+##### ACTIONS
+func interact_with_object(player, object,actions = null):
+	interacting_with = object
+	object.set_player(player)
+	description_window.set_text(get_description(interacting_with))
+	
+	#MAKE THE BUTTONS
+	make_buttons(actions)
+	#open the dialog interface
 	get_parent().show_dialog()
+	print("number of lines: ",$DialogText.get_last_line_number())
 	$TextHandler.grab_focus()
 
+func get_description(object):
+	return object.description if object.description != null else "No description set"	
+
+func action_taken(button):
+	update_state()
+	force_focus($ActionScroll/VBoxContainer.get_child(0)) #first control from action_scroll grabs focus
+
+
+###### OBJECT STATE
+func update_state():
+	#update object description
+	description_window.set_text(get_description(interacting_with))
+	#get its new functions, if any
+	var new_actions = interacting_with.actions()
+	wipe_buttons()
+	make_buttons(new_actions)
+
+###### BUTTONS
+
+func force_focus(node_to_focus):
+	if node_to_focus != null:
+		print(node_to_focus, "grabbed focus")
+		node_to_focus.grab_focus()
+	else:
+		print(node_to_focus, " is not a valid node to focus")
+
+func new_action_button(text,function):
+	var new_button = load("res://scenes/ActionButton.tscn").instance()
+	new_button.set_up(text, function)
+	return new_button
+	
+func leave_button():
+	return new_action_button("Leave",funcref(get_parent(),"hide_dialog"))
+
+func append_button(button):
+	action_scroll.add_child(button)
+
+func make_buttons(actions):
+	if actions:
+		for action in actions:
+			append_button(new_action_button(action, actions[action]))
+	#always add the 'leave' button last
+	append_button(leave_button())
+
+func wipe_buttons():
+	for child in action_scroll.get_children():
+		child.free()
 
 ######## Text Scroll Button
 
 func text_continue():
 	$DialogText.scroll()
 	
-func text_end():
+func text_end(): #called from a DialogText signal
+	$TextHandler.disable()
 	var first_action = $ActionScroll/VBoxContainer.get_child(0)
-	$TextHandler.end_of_text(first_action)
+	force_focus(first_action)
+
 
 
 ### NAVIGATION

@@ -27,10 +27,18 @@ func _on_Triangle_pressed():
 	print("text_continue pressed")
 	get_tree().call_group("dialog","text_continue")
 
-
-func end_of_text(node_to_focus):
+func set_up():
+	#IF TEXT IS LONG ENOUGH, SET TEXTURE AND PLAY PULSE
+	#ELSE DISABLE AND SET TEXTURE TO END
+	pass
+	
+func disable():
 	self.texture_normal = end_text_texture
 	stop_and_reset_pulse()
-	self.set_enabled_focus_mode(0)
-	node_to_focus.grab_focus()
+	self.set_focus_mode(0)
 	
+func reset():
+	#IF TEXT IS LONG ENOUGH, SET TEXTURE AND PLAY PULSE
+	self.texture_normal = long_text_texture
+	play_pulse()
+	#ELSE DISABLE AND SET TEXTURE TO END

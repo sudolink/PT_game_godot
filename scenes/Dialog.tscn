@@ -1,16 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scenes/Dialog.gd" type="Script" id=1]
-[ext_resource path="res://assets/hud/Description box_new.png" type="Texture" id=2]
-[ext_resource path="res://assets/FONT/MicroPix (1).ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://scenes/Test.theme" type="Theme" id=4]
-[ext_resource path="res://scenes/ActionButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/TrianglePulse.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/DialogText.gd" type="Script" id=8]
+[ext_resource path="res://scenes/Test.theme" type="Theme" id=1]
+[ext_resource path="res://scenes/Dialog.gd" type="Script" id=2]
+[ext_resource path="res://assets/hud/Description box_new.png" type="Texture" id=3]
+[ext_resource path="res://scenes/DialogText.gd" type="Script" id=4]
+[ext_resource path="res://assets/FONT/MicroPix (1).ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://scenes/TrianglePulse.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
-font_data = ExtResource( 3 )
+font_data = ExtResource( 5 )
 
 [node name="Dialog" type="Control" groups=[
 "dialog",
@@ -19,8 +18,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -1024.0
 margin_bottom = -600.0
-theme = ExtResource( 4 )
-script = ExtResource( 1 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 266.0, 380.0, 320.0, 32.0, 206.0 ],
 "_edit_use_anchors_": false,
@@ -31,7 +30,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_scale = Vector2( 4, 4 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -42,9 +41,8 @@ margin_top = 50.0
 margin_right = 443.0
 margin_bottom = 192.0
 rect_min_size = Vector2( 415, 0 )
-follow_focus = true
 scroll_horizontal_enabled = false
-script = ExtResource( 8 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -71,7 +69,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextHandler" parent="." instance=ExtResource( 7 )]
+[node name="TextHandler" parent="." instance=ExtResource( 6 )]
 margin_left = 410.0
 margin_top = 222.0
 margin_right = 415.0
@@ -84,72 +82,11 @@ margin_left = 24.0
 margin_top = 266.0
 margin_right = 432.0
 margin_bottom = 380.0
-follow_focus = true
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ActionScroll"]
-margin_right = 260.0
-margin_bottom = 240.0
 custom_constants/separation = 0
-alignment = 1
-
-[node name="ActionButton" parent="ActionScroll/VBoxContainer" instance=ExtResource( 5 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 260.0
-margin_bottom = 40.0
-text = "Placeholder"
-
-[node name="ActionButton2" parent="ActionScroll/VBoxContainer" instance=ExtResource( 5 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 40.0
-margin_right = 260.0
-margin_bottom = 80.0
-text = "Button of fortune"
-
-[node name="ActionButton3" parent="ActionScroll/VBoxContainer" instance=ExtResource( 5 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 80.0
-margin_right = 260.0
-margin_bottom = 120.0
-text = "numbero 3"
-
-[node name="ActionButton4" parent="ActionScroll/VBoxContainer" instance=ExtResource( 5 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 120.0
-margin_right = 260.0
-margin_bottom = 160.0
-
-[node name="ActionButton5" parent="ActionScroll/VBoxContainer" instance=ExtResource( 5 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 160.0
-margin_right = 260.0
-margin_bottom = 200.0
-text = "visual test"
-
-[node name="ActionButton6" parent="ActionScroll/VBoxContainer" instance=ExtResource( 5 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 200.0
-margin_right = 260.0
-margin_bottom = 240.0
 [connection signal="draw" from="DialogText" to="DialogText" method="_on_DialogText_draw"]

@@ -5,14 +5,6 @@ var available_actions = []
 
 func actions():
 	return available_actions
-
-func _on_proximity_body_entered(body):
-	if body.name == "Player":
-		body.imnear(self)
-
-func _on_proximity_body_exited(body):
-	if body.name == "Player":
-		body.ileft(self)
 	
 func _on_detect_body_lower_body_entered(body):
 	if body.name == "Player":

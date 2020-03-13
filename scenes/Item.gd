@@ -12,16 +12,6 @@ var available_actions = ["Pick up"]
 func _ready():
 	pass # Replace with function body.
 
-func _on_proximity_body_entered(body):
-	if body.name =="Player":
-		body.imnear(self)
-		player_in_self = body
-
-func _on_proximity_body_exited(body):
-	if body.name =="Player":
-		body.ileft(self)
-		player_in_self = false
-
 func pick_up():
 	get_parent().remove_child(self)
 	return self

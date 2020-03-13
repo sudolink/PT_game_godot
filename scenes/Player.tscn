@@ -1,37 +1,37 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=112 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/character/walk-frames/DOWN/0_frame.png" type="Texture" id=2]
-[ext_resource path="res://assets/character/walk-frames/DOWN/1_frame.png" type="Texture" id=3]
-[ext_resource path="res://assets/character/walk-frames/DOWN/2_frame.png" type="Texture" id=4]
-[ext_resource path="res://assets/character/walk-frames/DOWN/3_frame.png" type="Texture" id=5]
-[ext_resource path="res://assets/character/walk-frames/DOWN/4_frame.png" type="Texture" id=6]
-[ext_resource path="res://assets/character/walk-frames/DOWN/5_frame.png" type="Texture" id=7]
-[ext_resource path="res://assets/character/walk-frames/DOWN/6_frame.png" type="Texture" id=8]
-[ext_resource path="res://assets/character/walk-frames/DOWN/7_frame.png" type="Texture" id=9]
-[ext_resource path="res://assets/character/walk-frames/DOWN/8_frame.png" type="Texture" id=10]
-[ext_resource path="res://assets/character/walk-frames/DOWN/9_frame.png" type="Texture" id=11]
-[ext_resource path="res://assets/character/walk-frames/DOWN/10_frame.png" type="Texture" id=12]
-[ext_resource path="res://assets/character/walk-frames/DOWN/11_frame.png" type="Texture" id=13]
-[ext_resource path="res://assets/character/walk-frames/UP/0_frame.png" type="Texture" id=14]
-[ext_resource path="res://assets/character/walk-frames/UP/1_frame.png" type="Texture" id=15]
-[ext_resource path="res://assets/character/walk-frames/UP/2_frame.png" type="Texture" id=16]
-[ext_resource path="res://assets/character/walk-frames/UP/3_frame.png" type="Texture" id=17]
-[ext_resource path="res://assets/character/walk-frames/UP/4_frame.png" type="Texture" id=18]
-[ext_resource path="res://assets/character/walk-frames/UP/5_frame.png" type="Texture" id=19]
-[ext_resource path="res://assets/character/walk-frames/UP/6_frame.png" type="Texture" id=20]
-[ext_resource path="res://assets/character/walk-frames/UP/7_frame.png" type="Texture" id=21]
-[ext_resource path="res://assets/character/walk-frames/UP/8_frame.png" type="Texture" id=22]
-[ext_resource path="res://assets/character/walk-frames/UP/9_frame.png" type="Texture" id=23]
-[ext_resource path="res://assets/character/walk-frames/UP/10_frame.png" type="Texture" id=24]
-[ext_resource path="res://assets/character/walk-frames/UP/11_frame.png" type="Texture" id=25]
-[ext_resource path="res://assets/character/idles/char_idle_up1.png" type="Texture" id=26]
-[ext_resource path="res://assets/character/idles/char_idle_upl.png" type="Texture" id=27]
-[ext_resource path="res://assets/character/idles/char_idle_upr.png" type="Texture" id=28]
-[ext_resource path="res://assets/character/idles/char_idle_left.png" type="Texture" id=29]
-[ext_resource path="res://assets/character/idles/char_idle_right.png" type="Texture" id=30]
-[ext_resource path="res://assets/character/idles/char_idle_downr.png" type="Texture" id=31]
-[ext_resource path="res://assets/character/idles/char_idle_downL.png" type="Texture" id=32]
+[ext_resource path="res://assets/character/idles/char_idle_up1.png" type="Texture" id=2]
+[ext_resource path="res://assets/character/idles/char_idle_upl.png" type="Texture" id=3]
+[ext_resource path="res://assets/character/idles/char_idle_upr.png" type="Texture" id=4]
+[ext_resource path="res://assets/character/idles/char_idle_left.png" type="Texture" id=5]
+[ext_resource path="res://assets/character/idles/char_idle_right.png" type="Texture" id=6]
+[ext_resource path="res://assets/character/idles/char_idle_downr.png" type="Texture" id=7]
+[ext_resource path="res://assets/character/idles/char_idle_downL.png" type="Texture" id=8]
+[ext_resource path="res://assets/character/walk-frames/DOWN_RIGHT/Char walk downl1.png" type="Texture" id=9]
+[ext_resource path="res://assets/character/walk-frames/DOWN_RIGHT/Char walk downl2.png" type="Texture" id=10]
+[ext_resource path="res://assets/character/walk-frames/DOWN_RIGHT/Char walk downl3.png" type="Texture" id=11]
+[ext_resource path="res://assets/character/walk-frames/DOWN_RIGHT/Char walk downl4.png" type="Texture" id=12]
+[ext_resource path="res://assets/character/walk-frames/DOWN_RIGHT/Char walk downl5.png" type="Texture" id=13]
+[ext_resource path="res://assets/character/walk-frames/DOWN_RIGHT/Char walk downl6.png" type="Texture" id=14]
+[ext_resource path="res://assets/character/walk-frames/DOWN_RIGHT/Char walk downl7.png" type="Texture" id=15]
+[ext_resource path="res://assets/character/walk-frames/DOWN_RIGHT/Char walk downl8.png" type="Texture" id=16]
+[ext_resource path="res://assets/character/walk-frames/DOWN_RIGHT/Char walk downl9.png" type="Texture" id=17]
+[ext_resource path="res://assets/character/walk-frames/DOWN_RIGHT/Char walk downl10.png" type="Texture" id=18]
+[ext_resource path="res://assets/character/walk-frames/DOWN_RIGHT/Char walk downl11.png" type="Texture" id=19]
+[ext_resource path="res://assets/character/walk-frames/DOWN_RIGHT/Char walk downl12.png" type="Texture" id=20]
+[ext_resource path="res://assets/character/walk-frames/DOWN/0_frame.png" type="Texture" id=21]
+[ext_resource path="res://assets/character/walk-frames/DOWN/1_frame.png" type="Texture" id=22]
+[ext_resource path="res://assets/character/walk-frames/DOWN/2_frame.png" type="Texture" id=23]
+[ext_resource path="res://assets/character/walk-frames/DOWN/3_frame.png" type="Texture" id=24]
+[ext_resource path="res://assets/character/walk-frames/DOWN/4_frame.png" type="Texture" id=25]
+[ext_resource path="res://assets/character/walk-frames/DOWN/5_frame.png" type="Texture" id=26]
+[ext_resource path="res://assets/character/walk-frames/DOWN/6_frame.png" type="Texture" id=27]
+[ext_resource path="res://assets/character/walk-frames/DOWN/7_frame.png" type="Texture" id=28]
+[ext_resource path="res://assets/character/walk-frames/DOWN/8_frame.png" type="Texture" id=29]
+[ext_resource path="res://assets/character/walk-frames/DOWN/9_frame.png" type="Texture" id=30]
+[ext_resource path="res://assets/character/walk-frames/DOWN/10_frame.png" type="Texture" id=31]
+[ext_resource path="res://assets/character/walk-frames/DOWN/11_frame.png" type="Texture" id=32]
 [ext_resource path="res://assets/character/walk-frames/UP_LEFT/0_frame.png" type="Texture" id=33]
 [ext_resource path="res://assets/character/walk-frames/UP_LEFT/1_frame.png" type="Texture" id=34]
 [ext_resource path="res://assets/character/walk-frames/UP_LEFT/2_frame.png" type="Texture" id=35]
@@ -68,40 +68,92 @@
 [ext_resource path="res://assets/character/walk-frames/LEFT/9_frame.png" type="Texture" id=66]
 [ext_resource path="res://assets/character/walk-frames/LEFT/10_frame.png" type="Texture" id=67]
 [ext_resource path="res://assets/character/walk-frames/LEFT/11_frame.png" type="Texture" id=68]
-[ext_resource path="res://assets/character/InteractionNotifier.png" type="Texture" id=69]
-[ext_resource path="res://assets/character/light.png" type="Texture" id=70]
-[ext_resource path="res://scenes/PlayerInventory.tscn" type="PackedScene" id=71]
+[ext_resource path="res://assets/character/walk-frames/UP/0_frame.png" type="Texture" id=69]
+[ext_resource path="res://assets/character/walk-frames/UP/1_frame.png" type="Texture" id=70]
+[ext_resource path="res://assets/character/walk-frames/UP/2_frame.png" type="Texture" id=71]
+[ext_resource path="res://assets/character/walk-frames/UP/3_frame.png" type="Texture" id=72]
+[ext_resource path="res://assets/character/walk-frames/UP/4_frame.png" type="Texture" id=73]
+[ext_resource path="res://assets/character/walk-frames/UP/5_frame.png" type="Texture" id=74]
+[ext_resource path="res://assets/character/walk-frames/UP/6_frame.png" type="Texture" id=75]
+[ext_resource path="res://assets/character/walk-frames/UP/7_frame.png" type="Texture" id=76]
+[ext_resource path="res://assets/character/walk-frames/UP/8_frame.png" type="Texture" id=77]
+[ext_resource path="res://assets/character/walk-frames/UP/9_frame.png" type="Texture" id=78]
+[ext_resource path="res://assets/character/walk-frames/UP/10_frame.png" type="Texture" id=79]
+[ext_resource path="res://assets/character/walk-frames/UP/11_frame.png" type="Texture" id=80]
+[ext_resource path="res://assets/character/walk-frames/UP_RIGHT/0_frame.png" type="Texture" id=81]
+[ext_resource path="res://assets/character/walk-frames/UP_RIGHT/1_frame.png" type="Texture" id=82]
+[ext_resource path="res://assets/character/walk-frames/UP_RIGHT/2_frame.png" type="Texture" id=83]
+[ext_resource path="res://assets/character/walk-frames/UP_RIGHT/3_frame.png" type="Texture" id=84]
+[ext_resource path="res://assets/character/walk-frames/UP_RIGHT/4_frame.png" type="Texture" id=85]
+[ext_resource path="res://assets/character/walk-frames/UP_RIGHT/5_frame.png" type="Texture" id=86]
+[ext_resource path="res://assets/character/walk-frames/UP_RIGHT/6_frame.png" type="Texture" id=87]
+[ext_resource path="res://assets/character/walk-frames/UP_RIGHT/7_frame.png" type="Texture" id=88]
+[ext_resource path="res://assets/character/walk-frames/UP_RIGHT/8_frame.png" type="Texture" id=89]
+[ext_resource path="res://assets/character/walk-frames/UP_RIGHT/9_frame.png" type="Texture" id=90]
+[ext_resource path="res://assets/character/walk-frames/UP_RIGHT/10_frame.png" type="Texture" id=91]
+[ext_resource path="res://assets/character/walk-frames/UP_RIGHT/11_frame.png" type="Texture" id=92]
+[ext_resource path="res://assets/character/walk-frames/RIGHT/0_frame.png" type="Texture" id=93]
+[ext_resource path="res://assets/character/walk-frames/RIGHT/1_frame.png" type="Texture" id=94]
+[ext_resource path="res://assets/character/walk-frames/RIGHT/2_frame.png" type="Texture" id=95]
+[ext_resource path="res://assets/character/walk-frames/RIGHT/3_frame.png" type="Texture" id=96]
+[ext_resource path="res://assets/character/walk-frames/RIGHT/4_frame.png" type="Texture" id=97]
+[ext_resource path="res://assets/character/walk-frames/RIGHT/5_frame.png" type="Texture" id=98]
+[ext_resource path="res://assets/character/walk-frames/RIGHT/6_frame.png" type="Texture" id=99]
+[ext_resource path="res://assets/character/walk-frames/RIGHT/7_frame.png" type="Texture" id=100]
+[ext_resource path="res://assets/character/walk-frames/RIGHT/8_frame.png" type="Texture" id=101]
+[ext_resource path="res://assets/character/walk-frames/RIGHT/9_frame.png" type="Texture" id=102]
+[ext_resource path="res://assets/character/walk-frames/RIGHT/10_frame.png" type="Texture" id=103]
+[ext_resource path="res://assets/character/walk-frames/RIGHT/11_frame.png" type="Texture" id=104]
+[ext_resource path="res://assets/character/InteractionNotifier.png" type="Texture" id=105]
+[ext_resource path="res://assets/character/light.png" type="Texture" id=106]
+[ext_resource path="res://scenes/PlayerInventory.tscn" type="PackedScene" id=107]
+[ext_resource path="res://scenes/InteractionRay.gd" type="Script" id=108]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "downWalk",
-"speed": 16.0
-}, {
-"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 0.5
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ) ],
+"loop": true,
+"name": "downWalk",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "downRightDiag",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 69 ), ExtResource( 70 ), ExtResource( 71 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 77 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 80 ) ],
 "loop": true,
 "name": "upWalk",
 "speed": 16.0
 }, {
-"frames": [ ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ) ],
+"frames": [ ExtResource( 93 ), ExtResource( 94 ), ExtResource( 95 ), ExtResource( 96 ), ExtResource( 97 ), ExtResource( 98 ), ExtResource( 99 ), ExtResource( 100 ), ExtResource( 101 ), ExtResource( 102 ), ExtResource( 103 ), ExtResource( 104 ) ],
 "loop": true,
-"name": "downDiag",
+"name": "rightWalk",
 "speed": 16.0
 }, {
-"frames": [ ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ) ],
+"frames": [ ExtResource( 81 ), ExtResource( 82 ), ExtResource( 83 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 86 ), ExtResource( 87 ), ExtResource( 88 ), ExtResource( 89 ), ExtResource( 90 ), ExtResource( 91 ), ExtResource( 92 ) ],
 "loop": true,
-"name": "upDiag",
+"name": "upRightDiag",
 "speed": 16.0
 }, {
 "frames": [ ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 65 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 68 ) ],
 "loop": true,
-"name": "hWalk",
+"name": "leftWalk",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ) ],
+"loop": true,
+"name": "downLeftDiag",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ) ],
+"loop": true,
+"name": "upLeftDiag",
 "speed": 16.0
 } ]
 
@@ -124,7 +176,9 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 10, 4 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
 light_mask = 3
 position = Vector2( -0.0801532, -0.448617 )
 z_index = 4
@@ -140,14 +194,13 @@ light_mask = 2
 frames = SubResource( 1 )
 animation = "Idle"
 playing = true
-flip_h = true
 
 [node name="InteractionSprite" type="Sprite" parent="."]
 visible = false
 light_mask = 2
-position = Vector2( 0, -24.6904 )
+position = Vector2( 0, -25 )
 scale = Vector2( 0.05, 0.05 )
-texture = ExtResource( 69 )
+texture = ExtResource( 105 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="InteractionSprite"]
 autoplay = "bobbing"
@@ -169,10 +222,16 @@ position = Vector2( 0, -0.736107 )
 scale = Vector2( 1.2, 1.2 )
 z_index = -3
 enabled = false
-texture = ExtResource( 70 )
+texture = ExtResource( 106 )
 color = Color( 1, 0.854902, 0.470588, 1 )
 energy = 1.1
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 0.376471 )
 
-[node name="PlayerInventory" parent="." instance=ExtResource( 71 )]
+[node name="PlayerInventory" parent="." instance=ExtResource( 107 )]
+
+[node name="InteractionRay" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 0 )
+collision_mask = 26
+script = ExtResource( 108 )
