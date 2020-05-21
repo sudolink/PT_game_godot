@@ -11,6 +11,7 @@ signal direction_change(new_direction)
 var motion = Vector2()
 var direction = "up"
 var is_idle = false
+var at_door = null
 var interacting_with = null
 
 onready var collision_shape = $collision
@@ -39,7 +40,9 @@ func _physics_process(delta):
 	motion = move_and_slide(motion)
 	light_switch()
 	
-	if interacting_with:
+	if at_door:
+		interaction(at_door)
+	elif interacting_with and not at_door:
 		interaction(interacting_with)
 
 func _draw():
@@ -174,6 +177,11 @@ func interaction(object):
 				object.use(self)
 		else:
 			print("not close enough!")
+
+func met_door(door):
+	at_door = door
+	if door != null:
+		get_tree().call_group("interface", "see_an_object", at_door)
 
 func met_interactable(object):
 	interacting_with = object

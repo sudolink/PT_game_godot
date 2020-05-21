@@ -1,7 +1,6 @@
 extends "res://Box.gd"
 
 var crowbar_taken = false
-var player = null
 
 onready var crowbar_taken_sprite = "res://assets/objects/BoxCrowbarEmpty.png"
 onready var sprite_texture = $Sprite
@@ -19,12 +18,12 @@ func open():
 func drag():
 	print("drag attempt")
 	
-func set_player(player):
-	self.player = player
+#func set_player(player_obj):
+#	self.player = player_obj
 
 func take_contents():
-	print("loot attempt")
 	self.available_actions.erase("Take Crowbar")
 	self.description = "It's a wooden box."
 	sprite_texture.texture = load(crowbar_taken_sprite)
 	get_tree().call_group("player_inventory","add_to_inventory",contents[0])
+	only_leave_left()

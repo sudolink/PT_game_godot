@@ -15,12 +15,13 @@ var opened_description = "An old locker. \nContents: \n{str}"
 
 func _ready():
 	self.available_actions["Open"] = funcref(self,"attempt_open")
+	self.available_actions["Leave"] = funcref(self, "leave")
 	
 func set_player(player):
 	self.player = player
 
 func actions():
-	return available_actions	
+	return available_actions
 
 func attempt_open():
 	if locked:
@@ -43,8 +44,6 @@ func crowbar_it():
 		var grab_contents = contents if len(self.contents) > 0 else "Empty"
 		self.description = self.opened_description.format({"str" : grab_contents})
 		self.available_actions.erase("Pry it open")
-		for 
-		self.available_actions["Close"] = funcref(self,"close")
 	else:
 		self.description += "\nI can't pry it open with my fingers"
 	
@@ -54,35 +53,11 @@ func open():
 	else:
 		$AnimationHandler.play("OpenIt")
 	self.description = self.opened_description % (contents if len(contents) > 0 else "Empty")
-	self.available_actions["Close"] = funcref(self,"close")
 
-func close():
-	if self.alternate_door_open:
-		$AnimationHandler.play("CloseItAlt")
-	else:
-		$AnimationHandler.play("CloseIt")
-	self.description = self.closed_description
-
+func leave():
+	print("Came to item's leave function")
+	get_tree().call_group("interface", "hide_dialog")
 
 func take_item(item):
 	pass
-
-#func open(player):
-#	if not open:
-#		if locked:
-#			if player.has_crowbar():
-#				print("crowbar the motherfucker")
-#				open = true
-#				$AnimationHandler.play("CrowbarIt")
-#			else:
-#				print("You'd need a crowbar. Or something.")
-#		else:
-#			print("open the locker")
-#			$AnimationHandler.play("OpenIt")
-#			open = true
-#	else:
-#		if $AnimationHandler.current_animation == "CrowbarIt":
-#			print("Can't close'")
-#		else:
-#			$AnimationHandler.play("CloseIt")
 	

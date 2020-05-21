@@ -40,6 +40,8 @@ func catch_UI_key_presses():
 			dialog.action_up()
 		if Input.is_action_just_pressed("ui_accept"):
 			dialog.action_confirm()
+		if Input.is_action_just_pressed("test_action_delete"):
+			dialog.test_delete_first_button();
 
 func see_an_object(object):
 	if typeof(object) == typeof("nothing"):
@@ -68,9 +70,10 @@ func show_dialog():
 	$DarkenBackground.visible = true
 	get_tree().paused = true
 	dialog.visible = true
+	dialog.show()
 
 func hide_dialog():
 	$DarkenBackground.visible = false
 	get_tree().paused = false
 	dialog.visible = false
-	dialog.reset()
+	dialog.wipe_buttons()

@@ -76,7 +76,6 @@
 [ext_resource path="res://assets/character/light.png" type="Texture" id=74]
 [ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=75]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
@@ -99,14 +98,14 @@ animations = [ {
 "name": "hWalk",
 "speed": 16.0
 }, {
-"frames": [ ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ) ],
-"loop": true,
-"name": "downDiag",
-"speed": 16.0
-}, {
 "frames": [ ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ), ExtResource( 65 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 71 ), ExtResource( 72 ), ExtResource( 73 ) ],
 "loop": true,
 "name": "upDiag",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ) ],
+"loop": true,
+"name": "downDiag",
 "speed": 16.0
 } ]
 
@@ -145,7 +144,6 @@ __meta__ = {
 [node name="Pillar" parent="interactibles" instance=ExtResource( 5 )]
 
 [node name="Player" type="KinematicBody2D" parent="."]
-editor/display_folded = true
 light_mask = 3
 position = Vector2( 14.0124, 94.6326 )
 scale = Vector2( 0.7, 0.7 )
@@ -160,7 +158,7 @@ position = Vector2( 400, 256 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 7
+frame = 2
 playing = true
 
 [node name="collision" type="CollisionShape2D" parent="Player"]

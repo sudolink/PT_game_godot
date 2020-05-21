@@ -2,12 +2,12 @@
 
 [ext_resource path="res://TilesetFactory.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/DoorSide.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Item_base.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/Table.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/DoorUp.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/BoxMoveable.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/BoxCrowbar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Item_base.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Table.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/DoorUp.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/BoxMoveable.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/BoxCrowbar.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/DoorSide.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Locker.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=10]
 
@@ -40,30 +40,30 @@ position = Vector2( 256.007, 207.946 )
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="Item2" parent="Items" instance=ExtResource( 4 )]
+[node name="Item2" parent="Items" instance=ExtResource( 3 )]
 position = Vector2( 419.794, 215.857 )
 
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2( 231.94, 168 )
 
-[node name="Table" parent="Objects" instance=ExtResource( 5 )]
+[node name="Table" parent="Objects" instance=ExtResource( 4 )]
 position = Vector2( 0, -9.67266 )
 collision_mask = 3
 
-[node name="DoorUp" parent="Objects" instance=ExtResource( 6 )]
+[node name="DoorUp" parent="Objects" instance=ExtResource( 5 )]
 position = Vector2( 24.06, 88 )
 collision_mask = 3
 
-[node name="BoxMoveable" parent="Objects" instance=ExtResource( 7 )]
+[node name="BoxMoveable" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( -111.993, 23.946 )
 
-[node name="BoxCrowbar2" parent="Objects" instance=ExtResource( 8 )]
+[node name="BoxCrowbar2" parent="Objects" instance=ExtResource( 7 )]
 position = Vector2( 64.06, 44 )
 
-[node name="DoorSide" parent="Objects" instance=ExtResource( 3 )]
+[node name="DoorSide" parent="Objects" instance=ExtResource( 8 )]
 position = Vector2( -79.94, 16 )
 
-[node name="DoorSide2" parent="Objects" instance=ExtResource( 3 )]
+[node name="DoorSide2" parent="Objects" instance=ExtResource( 8 )]
 position = Vector2( 128.06, 16 )
 scale = Vector2( -1, 1 )
 
