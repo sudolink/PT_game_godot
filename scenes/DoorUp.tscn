@@ -1,37 +1,37 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/DoorUp.gd" type="Script" id=1]
-[ext_resource path="res://assets/objects/DoorDown5.png" type="Texture" id=2]
-[ext_resource path="res://assets/objects/DoorDown4.png" type="Texture" id=3]
-[ext_resource path="res://assets/objects/DoorDown3.png" type="Texture" id=4]
-[ext_resource path="res://assets/objects/DoorDown2.png" type="Texture" id=5]
-[ext_resource path="res://assets/objects/DoorDown1.png" type="Texture" id=6]
-[ext_resource path="res://assets/objects/Door5.png" type="Texture" id=7]
-[ext_resource path="res://assets/objects/Door4.png" type="Texture" id=8]
-[ext_resource path="res://assets/objects/Door3.png" type="Texture" id=9]
-[ext_resource path="res://assets/objects/Door2.png" type="Texture" id=10]
-[ext_resource path="res://assets/objects/Door1.png" type="Texture" id=11]
+[ext_resource path="res://assets/objects/Doors/Updown/Door1.png" type="Texture" id=2]
+[ext_resource path="res://assets/objects/Doors/Updown/Door2.png" type="Texture" id=3]
+[ext_resource path="res://assets/objects/Doors/Updown/Door3.png" type="Texture" id=4]
+[ext_resource path="res://assets/objects/Doors/Updown/Door4.png" type="Texture" id=5]
+[ext_resource path="res://assets/objects/Doors/Updown/Door5.png" type="Texture" id=6]
+[ext_resource path="res://assets/objects/Doors/Updown/DoorDown1.png" type="Texture" id=7]
+[ext_resource path="res://assets/objects/Doors/Updown/DoorDown2.png" type="Texture" id=8]
+[ext_resource path="res://assets/objects/Doors/Updown/DoorDown3.png" type="Texture" id=9]
+[ext_resource path="res://assets/objects/Doors/Updown/DoorDown4.png" type="Texture" id=10]
+[ext_resource path="res://assets/objects/Doors/Updown/DoorDown5.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
-"loop": false,
-"name": "CloseDown",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": false,
-"name": "CloseUp",
+"name": "UpOpen",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": false,
+"name": "DownOpen",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
 "loop": false,
-"name": "OpenDown",
+"name": "UpClose",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 11 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ) ],
 "loop": false,
-"name": "OpenUp",
+"name": "DownClose",
 "speed": 10.0
 } ]
 
@@ -41,63 +41,13 @@ extents = Vector2( 16, 20 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 16, 16 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "CloseDown"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "CloseDown" ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../PreventPassage:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16, 24 )
 
 [sub_resource type="Animation" id=5]
-resource_name = "CloseUp"
-length = 0.8
+resource_name = "Close"
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath("AnimatedSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -105,11 +55,11 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 0, 1, 2, 3, 4 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:animation")
+tracks/1/path = NodePath("AnimatedSprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -117,39 +67,50 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "CloseUp" ]
+"update": 0,
+"values": [ "DownClose" ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../PreventPassage:disabled")
+tracks/2/path = NodePath("PreventPassage:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0.2, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"update": 0,
+"values": [ Vector2( 1, 0.1 ), Vector2( 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath(".:offset")
+tracks/3/path = NodePath("PreventPassage:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 16 ) ]
+"values": [ Vector2( 0, 31 ), Vector2( 0, 16 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PreventPassage:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=6]
-length = 0.8
-step = 0.2
+resource_name = "Open"
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath("AnimatedSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -157,121 +118,208 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 0, 1, 2, 3, 4 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../PreventPassage:disabled")
+tracks/1/path = NodePath("AnimatedSprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "DownOpen" ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath(".:offset")
+tracks/2/path = NodePath("PreventPassage:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 16 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.3 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath(".:animation")
+tracks/3/path = NodePath("PreventPassage:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 16 ), Vector2( 0, 35 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PreventPassage:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ "OpenDown" ]
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=7]
-resource_name = "OpenUp"
-length = 0.8
+resource_name = "Close"
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath("AnimatedSprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "UpClose" ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:offset")
+tracks/1/path = NodePath("AnimatedSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ 0, 1, 2, 3, 4 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath(".:animation")
+tracks/2/path = NodePath("PreventPassage:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ "OpenUp" ]
+"values": [ true, false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../PreventPassage:disabled")
+tracks/3/path = NodePath("PreventPassage:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.6 ),
+"times": PoolRealArray( 0, 0.4, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.05 ), Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PreventPassage:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 20 ), Vector2( 0, 16 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Open"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "UpOpen" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PreventPassage:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
-
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 16, 24 )
+tracks/3/type = "value"
+tracks/3/path = NodePath("PreventPassage:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 16 ), Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PreventPassage:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.3 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 16, 16 )
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 15.9233, 2.95086 )
+extents = Vector2( 15.9233, 33.1507 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 16.116, 20 )
 
 [node name="DoorUp" type="StaticBody2D"]
 collision_layer = 2
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 16.0, -16.0, 32.0 ]
+"_edit_horizontal_guides_": [ 16.0, -16.0, 32.0 ],
+"_edit_vertical_guides_": [ -16.0, 16.0 ]
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 8 )
 frames = SubResource( 1 )
-animation = "OpenDown"
-frame = 4
-offset = Vector2( 0, 16 )
+animation = "UpOpen"
 
 [node name="UpperRender" type="Area2D" parent="AnimatedSprite"]
+position = Vector2( 0, -8.01612 )
 collision_layer = 2
 
 [node name="DetectRenderUpper" type="CollisionShape2D" parent="AnimatedSprite/UpperRender"]
@@ -279,35 +327,49 @@ position = Vector2( 0, 4 )
 shape = SubResource( 2 )
 
 [node name="LowerRender" type="Area2D" parent="AnimatedSprite"]
+position = Vector2( 0, -8.01612 )
 collision_layer = 2
 
 [node name="DetectRenderLower" type="CollisionShape2D" parent="AnimatedSprite/LowerRender"]
 position = Vector2( 0, 40 )
 shape = SubResource( 3 )
 
-[node name="OpenClose" type="AnimationPlayer" parent="AnimatedSprite"]
-anims/CloseDown = SubResource( 4 )
-anims/CloseUp = SubResource( 5 )
-anims/OpenDown = SubResource( 6 )
-anims/OpenUp = SubResource( 7 )
-
 [node name="proximity" type="Area2D" parent="AnimatedSprite"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/proximity"]
-position = Vector2( 0, 20 )
-shape = SubResource( 8 )
+position = Vector2( 0, 7.98388 )
+shape = SubResource( 4 )
+
+[node name="Doors_Down" type="AnimationPlayer" parent="."]
+anims/Close = SubResource( 5 )
+anims/Open = SubResource( 6 )
+
+[node name="Doors_Up" type="AnimationPlayer" parent="."]
+anims/Close = SubResource( 7 )
+anims/Open = SubResource( 8 )
 
 [node name="PreventPassage" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 16 )
 shape = SubResource( 9 )
-disabled = true
 
-[node name="InteractionArea" type="Area2D" parent="."]
+[node name="interact_field" type="Area2D" parent="."]
+position = Vector2( 0, -4 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2( 0, 38.3045 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interact_field"]
+position = Vector2( -0.115983, 17.1957 )
 shape = SubResource( 10 )
+
+[node name="obstruction_area" type="Area2D" parent="."]
+position = Vector2( 0, -4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstruction_area"]
+position = Vector2( 0, 28 )
+shape = SubResource( 11 )
 [connection signal="body_entered" from="AnimatedSprite/UpperRender" to="." method="_on_UpperRender_body_entered"]
 [connection signal="body_entered" from="AnimatedSprite/LowerRender" to="." method="_on_LowerRender_body_entered"]
 [connection signal="body_entered" from="AnimatedSprite/proximity" to="." method="_on_proximity_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite/proximity" to="." method="_on_proximity_body_exited"]
+[connection signal="body_entered" from="interact_field" to="." method="_on_interact_field_body_entered"]
+[connection signal="body_exited" from="interact_field" to="." method="_on_interact_field_body_exited"]
+[connection signal="body_entered" from="obstruction_area" to="." method="_on_obstruction_area_body_entered"]
+[connection signal="body_exited" from="obstruction_area" to="." method="_on_obstruction_area_body_exited"]

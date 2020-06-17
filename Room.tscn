@@ -3,12 +3,12 @@
 [ext_resource path="res://TilesetFactory.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Item_base.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Table.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/DoorUp.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/DoorSide.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Table.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/BoxMoveable.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/BoxCrowbar.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/DoorSide.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/Locker.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Locker.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/DoorUp.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=10]
 
 [sub_resource type="OccluderPolygon2D" id=1]
@@ -24,7 +24,6 @@ visible = false
 occluder = SubResource( 1 )
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -41,37 +40,42 @@ position = Vector2( 256.007, 207.946 )
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Item2" parent="Items" instance=ExtResource( 3 )]
-position = Vector2( 419.794, 215.857 )
+position = Vector2( 358, 210 )
 
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2( 231.94, 168 )
 
-[node name="Table" parent="Objects" instance=ExtResource( 4 )]
+[node name="Doors" type="Node2D" parent="Objects"]
+position = Vector2( 0, -9.67265 )
+
+[node name="DoorSide" parent="Objects/Doors" instance=ExtResource( 4 )]
+position = Vector2( -77.94, 25.6727 )
+collision_layer = 2
+collision_mask = 3
+
+[node name="DoorSide2" parent="Objects/Doors" instance=ExtResource( 4 )]
+position = Vector2( 106.06, 25.6727 )
+
+[node name="DoorUp" parent="Objects/Doors" instance=ExtResource( 9 )]
+position = Vector2( 24.06, 97.6727 )
+
+[node name="Boxes" type="Node2D" parent="Objects"]
+
+[node name="BoxMoveable" parent="Objects/Boxes" instance=ExtResource( 6 )]
+position = Vector2( -99.94, 36 )
+
+[node name="BoxCrowbar2" parent="Objects/Boxes" instance=ExtResource( 7 )]
+position = Vector2( 64.06, 44 )
+
+[node name="Table" parent="Objects" instance=ExtResource( 5 )]
 position = Vector2( 0, -9.67266 )
 collision_mask = 3
 
-[node name="DoorUp" parent="Objects" instance=ExtResource( 5 )]
-position = Vector2( 24.06, 88 )
-collision_mask = 3
-
-[node name="BoxMoveable" parent="Objects" instance=ExtResource( 6 )]
-position = Vector2( -111.993, 23.946 )
-
-[node name="BoxCrowbar2" parent="Objects" instance=ExtResource( 7 )]
-position = Vector2( 64.06, 44 )
-
-[node name="DoorSide" parent="Objects" instance=ExtResource( 8 )]
-position = Vector2( -79.94, 16 )
-
-[node name="DoorSide2" parent="Objects" instance=ExtResource( 8 )]
-position = Vector2( 128.06, 16 )
-scale = Vector2( -1, 1 )
-
-[node name="Locker2" parent="Objects" instance=ExtResource( 9 )]
+[node name="Locker2" parent="Objects" instance=ExtResource( 8 )]
 position = Vector2( 66.06, 158 )
 alternate_door_open = true
 
-[node name="Locker" parent="Objects" instance=ExtResource( 9 )]
+[node name="Locker" parent="Objects" instance=ExtResource( 8 )]
 position = Vector2( 50.06, 158 )
 
 [node name="UI" parent="." instance=ExtResource( 10 )]

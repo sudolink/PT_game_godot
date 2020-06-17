@@ -20,6 +20,13 @@ func _ready():
 func set_player(player):
 	self.player = player
 
+func use(player):
+	if self.locked:
+		get_tree().call_group("dialog","interact_with_object", player, self, self.actions())
+	else:
+		open()
+
+
 func actions():
 	return available_actions
 

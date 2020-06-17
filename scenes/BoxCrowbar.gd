@@ -17,9 +17,6 @@ func open():
 
 func drag():
 	print("drag attempt")
-	
-#func set_player(player_obj):
-#	self.player = player_obj
 
 func take_contents():
 	self.available_actions.erase("Take Crowbar")

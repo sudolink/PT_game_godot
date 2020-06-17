@@ -53,7 +53,6 @@ func action_taken(button):
 	force_focus($ActionScroll/VBoxContainer.get_child(0)) #first control from action_scroll grabs focus
 		
 
-
 ###### OBJECT STATE
 func update_state():
 	#update object description

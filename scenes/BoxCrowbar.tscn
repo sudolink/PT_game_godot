@@ -16,12 +16,9 @@ extents = Vector2( 8, 11 )
 [sub_resource type="CircleShape2D" id=4]
 radius = 8.0
 
-[node name="BoxCrowbar" type="StaticBody2D"]
+[node name="BoxCrowbar" type="KinematicBody2D"]
 collision_layer = 3
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_horizontal_guides_": [ 12.0 ]
-}
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 1 )
@@ -49,5 +46,3 @@ shape = SubResource( 3 )
 visible = false
 position = Vector2( 0, 4 )
 shape = SubResource( 4 )
-[connection signal="body_entered" from="detect_body_upper" to="." method="_on_detect_body_upper_body_entered"]
-[connection signal="body_entered" from="detect_body_lower" to="." method="_on_detect_body_lower_body_entered"]

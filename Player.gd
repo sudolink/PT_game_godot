@@ -12,6 +12,7 @@ var motion = Vector2()
 var direction = "up"
 var is_idle = false
 var at_door = null
+var grabbing = null
 var interacting_with = null
 
 onready var collision_shape = $collision
@@ -35,15 +36,21 @@ func _physics_process(delta):
 	else:
 		set_motion("idle")
 
+	## MOVEMENT
 	motion.x *= delta*SPEED/2
 	motion.y *= delta*SPEED/2
+	
 	motion = move_and_slide(motion)
+	
+	
+	
 	light_switch()
 	
-	if at_door:
+	if at_door: #door interaction currently takes precedence over interacting with anything else
 		interaction(at_door)
 	elif interacting_with and not at_door:
 		interaction(interacting_with)
+		
 
 func _draw():
 	draw_line(interaction_ray.ray_offset, interaction_ray.cast_to+interaction_ray.ray_offset, Color(255, 0, 0), 1)
@@ -160,6 +167,8 @@ func light_switch():
 		else:
 			$circlight.enabled = true
 
+func grab(object):
+	self.grabbing = object	
 
 ############ INTERACTION ###################
 
@@ -169,12 +178,13 @@ func interaction_distance(object):
 func interaction(object):
 	if Input.is_action_just_pressed("ui_interact"):
 		if interaction_distance(object):
-			#if object is intended to be interacted with through the dialog, then proceed to send its details to the dialog
-			if object.has_method("actions"):
-				get_tree().call_group("dialog","interact_with_object", self, object, object.actions())
-			else:
-			#if it does not, then it has to have the use function, which only performs one action - go ahead and perform that (door opening/closing, crowbarring stuff)
-				object.use(self)
+			object.use(self)
+#			#if object is intended to be interacted with through the dialog, then proceed to send its details to the dialog
+#			if object.has_method("actions"):
+#				get_tree().call_group("dialog","interact_with_object", self, object, object.actions())
+#			else:
+#			#if it does not, then it has to have the use function, which only performs one action - go ahead and perform that (door opening/closing, crowbarring stuff)
+#				object.use(self)
 		else:
 			print("not close enough!")
 
@@ -189,3 +199,26 @@ func met_interactable(object):
 
 func has_crowbar():
 	return inventory.has_item("Crowbar")
+
+
+############### QUERIES ####################
+func is_grabbing(object):
+	return object == self.grabbing
+	
+func report_size():
+	#ugly hack, reports extents of sprite, using first frame of the idle animation
+	return $Sprite.frames.get_frame("Idle",0).get_size()
+	
+  #### The below functions take the player's global position,
+	### and subtract or add half the player's width or height - to find the sprite's edges.
+func report_left_edge():
+	return self.global_position.x - (self.report_size()[0] / 2)
+
+func report_right_edge():
+	return self.global_position.x + (self.report_size()[0] / 2)
+
+func report_top_edge():
+	return self.global_position.y - (self.report_size()[1] / 2)
+	
+func report_bottom_edge():
+	return self.global_position.y + (self.report_size()[1] / 2)
