@@ -13,6 +13,7 @@ var direction = "up"
 var is_idle = false
 var at_door = null
 var grabbing = null
+var pushing_box = null
 var interacting_with = null
 
 onready var collision_shape = $collision
@@ -39,6 +40,10 @@ func _physics_process(delta):
 	## MOVEMENT
 	motion.x *= delta*SPEED/2
 	motion.y *= delta*SPEED/2
+	
+	#if pushing box, send it the movement
+	if self.pushing_box != null:
+		self.pushing_box.move_and_slide(self.motion)
 	
 	motion = move_and_slide(motion)
 	
@@ -197,28 +202,39 @@ func met_interactable(object):
 	interacting_with = object
 	get_tree().call_group("interface","see_an_object", interacting_with)
 
-func has_crowbar():
-	return inventory.has_item("Crowbar")
+func set_pushing_box(box):
+	self.pushing_box = box
 
+func clear_pushing_box(box):
+	self.pushing_box = null
 
 ############### QUERIES ####################
 func is_grabbing(object):
 	return object == self.grabbing
 	
+
+func has_crowbar():
+	return inventory.has_item("Crowbar")
+	
 func report_size():
 	#ugly hack, reports extents of sprite, using first frame of the idle animation
 	return $Sprite.frames.get_frame("Idle",0).get_size()
 	
-  #### The below functions take the player's global position,
-	### and subtract or add half the player's width or height - to find the sprite's edges.
+  #### The below functions take the player's global position and
+	### subtract or add half the player's width or height - to find the sprite's edges.
+	### EDIT: Modified to find edges of collision shape - because that's what is actually needed.
+	
 func report_left_edge():
-	return self.global_position.x - (self.report_size()[0] / 2)
+	return self.global_position.x - ($collision.get_shape().get_extents().x / 2)
 
 func report_right_edge():
-	return self.global_position.x + (self.report_size()[0] / 2)
+	return self.global_position.x + ($collision.get_shape().get_extents().x / 2)
 
 func report_top_edge():
-	return self.global_position.y - (self.report_size()[1] / 2)
+	return (self.global_position.y + $collision.position.y) - ($collision.get_shape().get_extents().y / 2)
 	
 func report_bottom_edge():
-	return self.global_position.y + (self.report_size()[1] / 2)
+	return (self.global_position.y + $collision.position.y) + ($collision.get_shape().get_extents().y / 2)
+
+func report_collision_center():
+	return self.global_position + $collision.position

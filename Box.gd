@@ -6,6 +6,7 @@ var available_actions = {}
 var player = null
 var motion = Vector2()
 var being_moved_by = null
+var player_motion = null
 export var blocks_doors = true
 export var moveable = false
 
@@ -16,21 +17,25 @@ func _physics_process(delta):
 			#then I can move diagonally with player
 			self.motion = move_and_slide(self.being_moved_by.motion)
 		else:
-			#then i can only move into one direction
-			#check in which direction i should move(only to the side opposite the one the player is standing at)
-			#check if player left of me
-			print(self.being_moved_by.motion.x, self.being_moved_by.motion.y)
-			
-			#check if player's left or right edge is less or more than own left or right edge.
-			if (self.being_moved_by.report_left_edge() > self.report_right_edge()
-				or self.being_moved_by.report_right_edge() < self.report_left_edge()):
-					self.motion = self.move(self.being_moved_by.motion.x,0)
-			elif (self.being_moved_by.report_top_edge() > self.report_bottom_edge()
-				or self.being_moved_by.report_bottom_edge() < self.report_top_edge()):
-					self.motion = self.move(0, self.being_moved_by.motion.y)
+				#print(self.being_moved_by.report_top_edge(), "---",self.report_bottom_edge())
+			#check if player is below box
+			if self.being_moved_by.report_top_edge() > self.report_bottom_edge():# and self.within_pushing_params(self.being_moved_by):
+				print("is below box")
+				self.motion = move(0,self.player_motion.y)
+			#check if player is above box
+			elif self.being_moved_by.report_bottom_edge() < self.report_top_edge():# and self.within_pushing_params(self.being_moved_by):
+				print("is above box")
+				self.motion = move(0,self.player_motion.y)
+			#check if player is left of box
+			elif self.being_moved_by.report_right_edge() < self.report_left_edge():# and self.within_pushing_params(self.being_moved_by):
+				print("is left of box")
+				self.motion = move(self.player_motion.x,0)
+			#check if player is right of box
+			elif self.being_moved_by.report_left_edge() > self.report_right_edge():# and self.within_pushing_params(self.being_moved_by):
+				print("is right of box")
+				self.motion = move(self.player_motion.x,0)
 			else:
-				print("Box.gd : No positioning criteria fit!")
-			
+				print("Box.gd: locational logic missed a case")
 	else:
 		#do nothing
 		pass
@@ -64,19 +69,30 @@ func leave():
 
 #############
 
+#set player motion
+func set_player_motion(pmotion):
+	self.player_motion = pmotion
+
 #Find edges
 func report_left_edge():
-	return self.global_position.x - ($Sprite.texture.get_size()[0] / 2)
+	return self.global_position.x - ($CollisionShape2D.get_shape().get_extents().x / 2)
 
 func report_right_edge():
-	return self.global_position.x + ($Sprite.texture.get_size()[0] / 2)
+	return self.global_position.x + ($CollisionShape2D.get_shape().get_extents().x / 2)
 
 func report_top_edge():
-	return self.global_position.y - ($Sprite.texture.get_size()[1] / 2)
+	return self.global_position.y - ($CollisionShape2D.get_shape().get_extents().y / 2)
 
 func report_bottom_edge():
-	return self.global_position.y + ($Sprite.texture.get_size()[1] / 2)
+	return self.global_position.y + ($CollisionShape2D.get_shape().get_extents().y / 2)
 
+#Find player body is within an acceptable positional relation to self - for box pushing
+func within_pushing_params(other_body):
+	#take the center of the body's collision, and check whether that center
+	#is between either the left and right edges of the box, or the top and bottom edges
+	#check for x first, then y
+	var body_pos = other_body.report_collision_center()
+	return (body_pos.x > self.report_left_edge() and body_pos.x < self.report_right_edge()) or (body_pos.y > self.report_bottom_edge() and body_pos.y < self.report_top_edge())
 
 
 func _on_detect_body_lower_body_entered(body):
@@ -91,10 +107,12 @@ func _on_detect_body_upper_body_entered(body):
 func _on_PlayerContact_body_entered(body):
 	if body.name == "Player" and self.moveable:
 		self.being_moved_by = body
+		self.being_moved_by.set_pushing_box(self)
 			
 
 
 func _on_PlayerContact_body_exited(body):
 	if body.name == "Player" and self.moveable:
+		self.being_moved_by.clear_pushing_box(self)
 		self.being_moved_by = null
 		self.motion = Vector2()
