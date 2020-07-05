@@ -16,8 +16,8 @@ extents = Vector2( 8, 8 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 8, 11 )
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 11, 9 )
+[sub_resource type="CircleShape2D" id=5]
+radius = 9.0
 
 [node name="BoxMoveable" type="KinematicBody2D"]
 collision_layer = 3
@@ -48,7 +48,7 @@ shape = SubResource( 4 )
 [node name="PlayerContact" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerContact"]
-position = Vector2( 0, 6 )
+position = Vector2( 0, 5 )
 shape = SubResource( 5 )
 [connection signal="body_entered" from="detect_body_upper" to="." method="_on_detect_body_upper_body_entered"]
 [connection signal="body_entered" from="detect_body_lower" to="." method="_on_detect_body_lower_body_entered"]

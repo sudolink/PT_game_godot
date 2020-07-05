@@ -1,15 +1,19 @@
 extends KinematicBody2D
 
+
+const MAX_DRAG_SPEED = 20
+const SPEED = 100
 var description = "It's a wooden box. lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
 var contents = [] 
 var available_actions = {}
 var player = null
 var motion = Vector2()
-var being_moved_by = null
-var player_motion = null
+
 export var blocks_doors = true
 export var moveable = false
 
+func _ready():	
+	self.available_actions["Leave"] = funcref(self, "leave")
 
 func _physics_process(delta):
 	if self.being_moved_by != null:
@@ -17,41 +21,22 @@ func _physics_process(delta):
 			#then I can move diagonally with player
 			self.motion = move_and_slide(self.being_moved_by.motion)
 		else:
-				#print(self.being_moved_by.report_top_edge(), "---",self.report_bottom_edge())
-			#check if player is below box
-			if self.being_moved_by.report_top_edge() > self.report_bottom_edge():# and self.within_pushing_params(self.being_moved_by):
-				print("is below box")
-				self.motion = move(0,self.player_motion.y)
-			#check if player is above box
-			elif self.being_moved_by.report_bottom_edge() < self.report_top_edge():# and self.within_pushing_params(self.being_moved_by):
-				print("is above box")
-				self.motion = move(0,self.player_motion.y)
-			#check if player is left of box
-			elif self.being_moved_by.report_right_edge() < self.report_left_edge():# and self.within_pushing_params(self.being_moved_by):
-				print("is left of box")
-				self.motion = move(self.player_motion.x,0)
-			#check if player is right of box
-			elif self.being_moved_by.report_left_edge() > self.report_right_edge():# and self.within_pushing_params(self.being_moved_by):
-				print("is right of box")
-				self.motion = move(self.player_motion.x,0)
-			else:
-				print("Box.gd: locational logic missed a case")
+			print("box should move in only one dir, away from player.")
 	else:
 		#do nothing
 		pass
 		
-func move(mtn_x = 0, mtn_y = 0):
-	return move_and_slide(Vector2(mtn_x,mtn_y))
-	
+func move():
+	self.motion = move_and_slide(self.motion)
+
+func move_deprecated(mtn_x = 0, mtn_y = 0):
+	self.motion = move_and_slide(Vector2(mtn_x,mtn_y))
 
 func use(player):
 	if self.moveable:
 		print("box stick to player")
 	else:
 		get_tree().call_group("dialog","interact_with_object", player, self, self.actions())
-	
-func _ready():
-	self.available_actions["Leave"] = funcref(self, "leave")
 
 func set_player(player):
 	self.player = player
@@ -68,10 +53,6 @@ func leave():
 	get_tree().call_group("interface", "hide_dialog")
 
 #############
-
-#set player motion
-func set_player_motion(pmotion):
-	self.player_motion = pmotion
 
 #Find edges
 func report_left_edge():
@@ -95,6 +76,8 @@ func within_pushing_params(other_body):
 	return (body_pos.x > self.report_left_edge() and body_pos.x < self.report_right_edge()) or (body_pos.y > self.report_bottom_edge() and body_pos.y < self.report_top_edge())
 
 
+
+#### For displaying/drawing the box behind/over the player as needed
 func _on_detect_body_lower_body_entered(body):
 	if body.name == "Player" or body.name.substr(0,11) == "BoxMoveable":
 		z_index = body.z_index - 1
@@ -104,15 +87,19 @@ func _on_detect_body_upper_body_entered(body):
 		z_index = body.z_index + 1
 
 
+#### Detect player contact
+
 func _on_PlayerContact_body_entered(body):
 	if body.name == "Player" and self.moveable:
-		self.being_moved_by = body
-		self.being_moved_by.set_pushing_box(self)
-			
-
+		print(body.name, "contact!")
+		#self.being_moved_by = body
+		#self.being_moved_by.set_pushing_box(self)
 
 func _on_PlayerContact_body_exited(body):
 	if body.name == "Player" and self.moveable:
-		self.being_moved_by.clear_pushing_box(self)
-		self.being_moved_by = null
-		self.motion = Vector2()
+		print(body.name, " left!")
+		#self.being_moved_by.clear_pushing_box(self)
+		#self.being_moved_by = null
+		#self.motion = Vector2(0,0)
+
+

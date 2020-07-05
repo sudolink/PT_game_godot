@@ -25,17 +25,5 @@ position = Vector2( 0.14989, 37.3225 )
 position = Vector2( 4.11676, -4.79542 )
 
 [node name="BoxMoveable" parent="." instance=ExtResource( 5 )]
-position = Vector2( 47.3274, 3.56739 )
-moveable = true
-
-[node name="BoxMoveable2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 87.2822, 3.09174 )
-moveable = true
-
-[node name="BoxMoveable3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 63.7374, 34.7226 )
-moveable = true
-
-[node name="BoxMoveable4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 59.4565, -34.0092 )
+position = Vector2( 42.0239, -4.74464 )
 moveable = true

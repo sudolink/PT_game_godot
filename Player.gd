@@ -12,8 +12,6 @@ var motion = Vector2()
 var direction = "up"
 var is_idle = false
 var at_door = null
-var grabbing = null
-var pushing_box = null
 var interacting_with = null
 
 onready var collision_shape = $collision
@@ -41,11 +39,8 @@ func _physics_process(delta):
 	motion.x *= delta*SPEED/2
 	motion.y *= delta*SPEED/2
 	
-	#if pushing box, send it the movement
-	if self.pushing_box != null:
-		self.pushing_box.move_and_slide(self.motion)
-	
 	motion = move_and_slide(motion)
+	
 	
 	
 	
@@ -173,7 +168,7 @@ func light_switch():
 			$circlight.enabled = true
 
 func grab(object):
-	self.grabbing = object	
+	self.grabbing = object
 
 ############ INTERACTION ###################
 
@@ -202,16 +197,7 @@ func met_interactable(object):
 	interacting_with = object
 	get_tree().call_group("interface","see_an_object", interacting_with)
 
-func set_pushing_box(box):
-	self.pushing_box = box
-
-func clear_pushing_box(box):
-	self.pushing_box = null
-
 ############### QUERIES ####################
-func is_grabbing(object):
-	return object == self.grabbing
-	
 
 func has_crowbar():
 	return inventory.has_item("Crowbar")
